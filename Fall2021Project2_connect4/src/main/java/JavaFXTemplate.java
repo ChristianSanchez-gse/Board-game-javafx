@@ -17,6 +17,7 @@ public class JavaFXTemplate extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		primaryStage.setTitle("Welcome to Connect Four!");
+		System.out.println("waddup andrew");
 		
 		
 		
