@@ -37,5 +37,6 @@ public class JavaFXTemplate extends Application {
 		ingameScreen = new Scene(box2, 700,700);
 		primaryStage.setScene(welcomeScreen);
 		primaryStage.show();
+		
 	}
 }
