@@ -1,9 +1,16 @@
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -23,18 +30,62 @@ public class JavaFXTemplate extends Application {
 		primaryStage.setTitle("Connect 4 by Christian Sanchez and Andrew Mina");
 		// Buttons
 		Button play = new Button("Welcome Screen. Press this to move on");
-		Button back = new Button("This is the in game window, press this to go back");
+		Button back = new Button("Back to welcome");
+		
+		// Buttons for in game menu
+		Button themeB = new Button("Themes");
+		Button gamePlayB = new Button("Game Play");
+		
+		
+		//Options screen stuff
+		Button rulesB = new Button("rules screen button");
+		Button NewGameB = new Button("New Game Button");
+		Button ExitB = new Button("Exit Button");
+		
+		// Grid pane setup
+		GridPane gameGrid = new GridPane();
+		gameGrid.setPadding(new Insets(50, 50, 50, 50));
+		gameGrid.setVgap(5);
+		gameGrid.setHgap(5);
+		for (int i = 0; i < 7; i++) {
+			for (int j = 0; j < 7; j++) {
+				gameGrid.add(new Button(i +", " + j), i, j);
+			}
+		}
+		VBox grid = new VBox(gameGrid);
+		grid.setAlignment(Pos.CENTER);
+		
+				
+		
+		// options dropdown button
+		ObservableList<Button> options = 
+		FXCollections.observableArrayList(rulesB, NewGameB, ExitB);
+		final ComboBox Options = new ComboBox(options);
+		Options.setPromptText("Options");	
+		
 		// Actions for buttons
 		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
 		back.setOnAction(e -> primaryStage.setScene(welcomeScreen));
+		rulesB.setOnAction(e -> primaryStage.setScene(rulesScreen));
 		// Adding the buttons to a layout
 		VBox box = new VBox(play);
-		VBox box2 = new VBox(back);
-		box2.setAlignment(Pos.CENTER);
+		
+		
+		
+		
+		// Setting ingame box to HBox so its horizontal
+		
+		HBox box2 = new HBox(back, themeB, gamePlayB, Options);
+		Pane ingamePane = new Pane(box2, grid);
+	
+		// setting the in game Menu to the top
+		box2.setAlignment(Pos.TOP_CENTER);
+		grid.setAlignment(Pos.CENTER);
 		
 		// building the scenes
 		welcomeScreen = new Scene(box, 700,700);
-		ingameScreen = new Scene(box2, 700,700);
+		ingameScreen = new Scene(ingamePane, 700,700);
+		rulesScreen = new Scene(rulesB, 700, 700);
 		primaryStage.setScene(welcomeScreen);
 		primaryStage.show();
 		// Andrews comment
