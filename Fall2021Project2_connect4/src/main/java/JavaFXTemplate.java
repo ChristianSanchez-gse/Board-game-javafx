@@ -28,8 +28,6 @@ public class JavaFXTemplate extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		primaryStage.setTitle("Connect 4 by Christian Sanchez and Andrew Mina");
-		// Buttons
-		Button play = new Button("Welcome Screen. Press this to move on");
 		Button back = new Button("Back to welcome");
 		
 		// Buttons for in game menu
@@ -64,11 +62,11 @@ public class JavaFXTemplate extends Application {
 		Options.setPromptText("Options");	
 		
 		// Actions for buttons
-		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
+		
 		back.setOnAction(e -> primaryStage.setScene(welcomeScreen));
 		rulesB.setOnAction(e -> primaryStage.setScene(rulesScreen));
 		// Adding the buttons to a layout
-		VBox box = new VBox(play);
+		
 		
 		
 		
@@ -83,12 +81,12 @@ public class JavaFXTemplate extends Application {
 		grid.setAlignment(Pos.CENTER);
 		
 		// building the scenes
-		welcomeScreen = new Scene(box, 700,700);
+		
 		ingameScreen = new Scene(ingamePane, 700,700);
 		rulesScreen = new Scene(rulesB, 700, 700);
-		primaryStage.setScene(welcomeScreen);
+		
+		Welcome.makeWindow(primaryStage, ingameScreen);
 		primaryStage.show();
-		// Andrews comment
 		
 	}
 }
