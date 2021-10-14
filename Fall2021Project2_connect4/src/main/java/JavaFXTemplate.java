@@ -83,14 +83,22 @@ public class JavaFXTemplate extends Application {
 		gameGrid.setHgap(20);
 		for(int i = 0; i < 7; i++) {
 			for(int j = 0; j < 6; j++) {
-				checkerArr[i][j] = new CheckerPiece( i + ", " + j);
+				checkerArr[i][j] = new CheckerPiece( i + ", " + j, i, j);
+				checkerArr[i][j].setOnAction(e -> updateChecker(this.checkerArr[i][j]));
 				gameGrid.add(checkerArr[i][j],i,j);
 			}
 		}
 		
 	}
-	public void setCheckerActions() {
-		checkerArr[0][0].setOnAction(e -> checkerArr[0][0].setStyle("-fx-background-color: #ff0000; "));
+	
+	// changes all the values depending on what player clicks the button.
+	// it will add the checkerpiece to the stack in order to keep track of the history.
+	public void updateChecker(CheckerPiece checker) {
+		// if the play is odd, player 1, otherwise player 2 is the current move
+		// change the checkerpiece to the correct color
+		// add the checkerpiece to the stack
+		System.out.println("You clicked: " + checker.getRow() + checker.getCol());
+		
 	}
 	
 }
