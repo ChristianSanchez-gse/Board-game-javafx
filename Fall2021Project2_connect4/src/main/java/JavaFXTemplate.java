@@ -57,7 +57,7 @@ public class JavaFXTemplate extends Application {
 		BorderPane inGamePane = new BorderPane();
 		
 		// My attempt at using a borderpane to set the options at the very top and the game grid in the center
-		// of the screen... didint work but we definitely should use borderpane for this.
+		// of the screen... didnt work but we definitely should use borderpane for this.
 		inGamePane.setTop(topButtons);
 		inGamePane.setCenter(gameGrid);
 		backButton.setOnAction(e -> primaryStage.setScene(welcomeScreen));
