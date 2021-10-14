@@ -6,7 +6,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -36,8 +38,8 @@ public class JavaFXTemplate extends Application {
 		//////////////////////////////////////
 		
 		Button play = new Button("Welcome Screen. Press this to move on");
-		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
 		VBox box = new VBox(play);
+		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
 		box.setAlignment(Pos.CENTER);
 		welcomeScreen = new Scene(box, 700,700);
 		
@@ -46,13 +48,23 @@ public class JavaFXTemplate extends Application {
 		///////////////////////////////////////
 		// setting up the In Game screen
 		///////////////////////////////////////
-		Button back = new Button("This is the in game window, press this to go back");
-		back.setOnAction(e -> primaryStage.setScene(welcomeScreen));
+		Button optionsButton = new Button("Options");
+		Button themesButton = new Button("Themes");
+		Button undoButton = new Button("Undo");
+		Button backButton = new Button("back (this button will be deleted)");
+		
+		HBox topButtons = new HBox(optionsButton, themesButton, undoButton, backButton);
+		BorderPane inGamePane = new BorderPane();
+		
+		// My attempt at using a borderpane to set the options at the very top and the game grid in the center
+		// of the screen... didint work but we definitely should use borderpane for this.
+		inGamePane.setTop(topButtons);
+		inGamePane.setCenter(gameGrid);
+		backButton.setOnAction(e -> primaryStage.setScene(welcomeScreen));
 		
 		// Creating an array of buttons that will be used in the gridpane
 		buildArray();
-		VBox box2 = new VBox(back, gameGrid);
-		ingameScreen = new Scene(box2, 700,700);
+		ingameScreen = new Scene(inGamePane, 700,700);
 		
 		
 		///////////////////////////////////
@@ -61,6 +73,9 @@ public class JavaFXTemplate extends Application {
 		primaryStage.setScene(welcomeScreen);
 		primaryStage.show();
 	}
+	
+	// This function adds buttons to both buttonArr
+	// and gameGrid which are declared at the top of this class.
 	public void buildArray() {
 		//gameGrid.setPadding(new Insets(50, 50, 50, 50));
 		gameGrid.setVgap(5);
