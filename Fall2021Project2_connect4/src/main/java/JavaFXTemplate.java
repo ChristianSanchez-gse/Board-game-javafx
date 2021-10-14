@@ -1,16 +1,12 @@
+import java.awt.Insets;
+
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,74 +17,61 @@ public class JavaFXTemplate extends Application {
 	Scene ingameScreen;
 	Scene optionsScreen;
 	Scene rulesScreen;
+	
+	// The gridpane and array that will be used for buttons
+	Button[][] buttonArr = new Button[7][6];
+	GridPane gameGrid = new GridPane();
+	
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
+		// Setting up the program details and advancing to the welcome screen.
 		primaryStage.setTitle("Connect 4 by Christian Sanchez and Andrew Mina");
-		// Buttons
+		
+		//////////////////////////////////////
+		// setting up the Welcome screen
+		//////////////////////////////////////
+		
 		Button play = new Button("Welcome Screen. Press this to move on");
-		Button back = new Button("Back to welcome");
+		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
+		VBox box = new VBox(play);
+		box.setAlignment(Pos.CENTER);
+		welcomeScreen = new Scene(box, 700,700);
 		
-		// Buttons for in game menu
-		Button themeB = new Button("Themes");
-		Button gamePlayB = new Button("Game Play");
 		
 		
-		//Options screen stuff
-		Button rulesB = new Button("rules screen button");
-		Button NewGameB = new Button("New Game Button");
-		Button ExitB = new Button("Exit Button");
+		///////////////////////////////////////
+		// setting up the In Game screen
+		///////////////////////////////////////
+		Button back = new Button("This is the in game window, press this to go back");
+		back.setOnAction(e -> primaryStage.setScene(welcomeScreen));
 		
-		// Grid pane setup
-		GridPane gameGrid = new GridPane();
-		gameGrid.setPadding(new Insets(50, 50, 50, 50));
+		// Creating an array of buttons that will be used in the gridpane
+		buildArray();
+		VBox box2 = new VBox(back, gameGrid);
+		ingameScreen = new Scene(box2, 700,700);
+		
+		
+		///////////////////////////////////
+		// showing the initial screen
+		///////////////////////////////////
+		primaryStage.setScene(welcomeScreen);
+		primaryStage.show();
+	}
+	public void buildArray() {
+		//gameGrid.setPadding(new Insets(50, 50, 50, 50));
 		gameGrid.setVgap(5);
 		gameGrid.setHgap(5);
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 7; j++) {
+		for(int i = 0; i < 7; i++) {
+			for(int j = 0; j < 6; j++) {
+				buttonArr[i][j] = new Button( i + ", " + j);
 				gameGrid.add(new Button(i +", " + j), i, j);
 			}
 		}
-		VBox grid = new VBox(gameGrid);
-		grid.setAlignment(Pos.CENTER);
-		
-				
-		
-		// options dropdown button
-		ObservableList<Button> options = 
-		FXCollections.observableArrayList(rulesB, NewGameB, ExitB);
-		final ComboBox Options = new ComboBox(options);
-		Options.setPromptText("Options");	
-		
-		// Actions for buttons
-		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
-		back.setOnAction(e -> primaryStage.setScene(welcomeScreen));
-		rulesB.setOnAction(e -> primaryStage.setScene(rulesScreen));
-		// Adding the buttons to a layout
-		VBox box = new VBox(play);
-		
-		
-		
-		
-		// Setting ingame box to HBox so its horizontal
-		
-		HBox box2 = new HBox(back, themeB, gamePlayB, Options);
-		Pane ingamePane = new Pane(box2, grid);
-	
-		// setting the in game Menu to the top
-		box2.setAlignment(Pos.TOP_CENTER);
-		grid.setAlignment(Pos.CENTER);
-		
-		// building the scenes
-		welcomeScreen = new Scene(box, 700,700);
-		ingameScreen = new Scene(ingamePane, 700,700);
-		rulesScreen = new Scene(rulesB, 700, 700);
-		primaryStage.setScene(welcomeScreen);
-		primaryStage.show();
-		// Andrews comment
-		
 	}
+	
+	
 }
