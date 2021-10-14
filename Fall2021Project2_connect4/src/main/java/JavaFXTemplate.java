@@ -21,7 +21,7 @@ public class JavaFXTemplate extends Application {
 	Scene rulesScreen;
 	
 	// The gridpane and array that will be used for buttons
-	Button[][] buttonArr = new Button[7][6];
+	CheckerPiece[][] checkerArr = new CheckerPiece[7][6];
 	GridPane gameGrid = new GridPane();
 	
 	
@@ -64,6 +64,7 @@ public class JavaFXTemplate extends Application {
 		
 		// Creating an array of buttons that will be used in the gridpane
 		buildArray();
+		setCheckerActions();
 		ingameScreen = new Scene(inGamePane, 700,700);
 		
 		
@@ -78,15 +79,18 @@ public class JavaFXTemplate extends Application {
 	// and gameGrid which are declared at the top of this class.
 	public void buildArray() {
 		//gameGrid.setPadding(new Insets(50, 50, 50, 50));
-		gameGrid.setVgap(5);
-		gameGrid.setHgap(5);
+		gameGrid.setVgap(20);
+		gameGrid.setHgap(20);
 		for(int i = 0; i < 7; i++) {
 			for(int j = 0; j < 6; j++) {
-				buttonArr[i][j] = new Button( i + ", " + j);
-				gameGrid.add(new Button(i +", " + j), i, j);
+				checkerArr[i][j] = new CheckerPiece( i + ", " + j);
+				gameGrid.add(checkerArr[i][j],i,j);
 			}
 		}
+		
 	}
-	
+	public void setCheckerActions() {
+		checkerArr[0][0].setOnAction(e -> checkerArr[0][0].setStyle("-fx-background-color: #ff0000; "));
+	}
 	
 }
