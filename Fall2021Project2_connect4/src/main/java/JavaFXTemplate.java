@@ -21,8 +21,8 @@ public class JavaFXTemplate extends Application {
 	Scene rulesScreen;
 	
 	// The gridpane and array that will be used for buttons
-	CheckerPiece[][] checkerArr = new CheckerPiece[7][6];
-	GridPane gameGrid = new GridPane();
+	
+	
 	
 	
 	public static void main(String[] args) {
@@ -55,16 +55,18 @@ public class JavaFXTemplate extends Application {
 		
 		HBox topButtons = new HBox(optionsButton, themesButton, undoButton, backButton);
 		BorderPane inGamePane = new BorderPane();
+		// create grid object
+		GameGrid gameGrid = new GameGrid();
 		
 		// My attempt at using a borderpane to set the options at the very top and the game grid in the center
 		// of the screen... didnt work but we definitely should use borderpane for this.
 		inGamePane.setTop(topButtons);
-		inGamePane.setCenter(gameGrid);
+		inGamePane.setCenter(gameGrid.getGrid());
 		backButton.setOnAction(e -> primaryStage.setScene(welcomeScreen));
 		
 		// Creating an array of buttons that will be used in the gridpane
-		buildArray();
-		setCheckerActions();
+		gameGrid.buildArray();
+		//setCheckerActions();
 		ingameScreen = new Scene(inGamePane, 700,700);
 		
 		
@@ -77,28 +79,8 @@ public class JavaFXTemplate extends Application {
 	
 	// This function adds buttons to both buttonArr
 	// and gameGrid which are declared at the top of this class.
-	public void buildArray() {
-		//gameGrid.setPadding(new Insets(50, 50, 50, 50));
-		gameGrid.setVgap(20);
-		gameGrid.setHgap(20);
-		for(int i = 0; i < 7; i++) {
-			for(int j = 0; j < 6; j++) {
-				checkerArr[i][j] = new CheckerPiece( i + ", " + j, i, j);
-				checkerArr[i][j].setOnAction(e -> updateChecker(this.checkerArr[i][j]));
-				gameGrid.add(checkerArr[i][j],i,j);
-			}
-		}
-		
-	}
+
 	
-	// changes all the values depending on what player clicks the button.
-	// it will add the checkerpiece to the stack in order to keep track of the history.
-	public void updateChecker(CheckerPiece checker) {
-		// if the play is odd, player 1, otherwise player 2 is the current move
-		// change the checkerpiece to the correct color
-		// add the checkerpiece to the stack
-		System.out.println("You clicked: " + checker.getRow() + checker.getCol());
-		
-	}
+
 	
 }
