@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 public class CheckerPiece extends Button{
 	private int col;
 	private int row;
-	private string color; if(color == "red")
+	private boolean occupied;
 	private int player;
 	
 	
@@ -14,7 +14,7 @@ public class CheckerPiece extends Button{
 		this.setText(string);
 		this.col = col;
 		this.row = row;
-		
+		this.occupied = false;
 	}
 	public int getCol() {
 		return col;
@@ -35,4 +35,18 @@ public class CheckerPiece extends Button{
 		}
 	};
 */
+	public boolean isOccupied() {
+		return occupied;
+	}
+	public void setOccupied(boolean b) {
+		this.occupied = b;
+		
+	}
+	public void setPlayer(int i) {
+		this.player = i;
+		
+	}
+	public int getPlayer() {
+		return this.player;
+	}
 }
