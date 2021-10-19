@@ -41,9 +41,11 @@ public class GameGrid {
 		if (playHistory.isEmpty() == true || playHistory.peek().getPlayer() == 1){
 			checkerArr[checker.getRow()][checker.getCol()].setStyle("-fx-background-color: #00b3ff");
 			checkerArr[checker.getRow()][checker.getCol()].setPlayer(2);
+			System.out.println("it is now player 1's turn");
 		} else {
 				checkerArr[checker.getRow()][checker.getCol()].setStyle("-fx-background-color: #00ff99");
 				checkerArr[checker.getRow()][checker.getCol()].setPlayer(1);
+				System.out.println("it is now player 2's turn");
 		}
 		System.out.println("added player to the stack: " + checker.getPlayer());
 		playHistory.add(checker);
@@ -57,27 +59,13 @@ public class GameGrid {
 		
 	}
 	
-	// Adds the current checkerpiece to the stack playHistory to be used
-	// when the undo button is pressed.
-	public void addToStack(){
-		
-	}
-	
 	// gets called whenever a move is made in order to stop the game
 	// if a winner is found
 	public void checkWinner() {
 		
 	}
 	
-	public void buildArray() {
-		//gameGrid.setPadding(new Insets(50, 50, 50, 50));
-		
-		// make the array global as before
-		// inside the j loop, create a temp game button, with I, J in the constructor
-		// temp.setonaction( e -> pressbutton())
-		// pass temp in that pressButton() method.
-		// 
-		
+	public void buildArray() {	
 		gameGrid.setVgap(20);
 		gameGrid.setHgap(20);
 		for(int row = 0; row < 6; row++) {
