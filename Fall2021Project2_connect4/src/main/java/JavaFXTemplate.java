@@ -1,11 +1,15 @@
 import java.awt.Insets;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -68,7 +72,11 @@ public class JavaFXTemplate extends Application {
 		Button undoButton = new Button("Undo");
 		Button backButton = new Button("back (this button will be deleted)");
 		
-		HBox topButtons = new HBox(optionsButton, themesButton, undoButton, backButton);
+		ChoiceBox<String> choiceBox = new ChoiceBox<>();
+		choiceBox.getItems().addAll("Theme 1", "Theme 2", "Theme 3");
+		choiceBox.setValue("Theme 1");
+		
+		HBox topButtons = new HBox(optionsButton, choiceBox, undoButton, backButton);
 		topButtons.setAlignment(Pos.TOP_CENTER);
 		BorderPane inGamePane = new BorderPane();
 		// create grid object
@@ -86,11 +94,11 @@ public class JavaFXTemplate extends Application {
 		//setCheckerActions();
 		ingameScreen = new Scene(inGamePane, 700,700);
 		
-		
 		///////////////////////////////////
 		// showing the initial screen
 		///////////////////////////////////
 		primaryStage.setScene(welcomeScreen);
+		primaryStage.setFullScreen(true);
 		primaryStage.show();
 	}
 	

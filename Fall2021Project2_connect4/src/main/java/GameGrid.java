@@ -15,7 +15,7 @@ public class GameGrid {
 	GridPane gameGrid = new GridPane();
 	private final CheckerPiece[][] checkerArr = new CheckerPiece[6][7];
 	
-	int theme = 1;
+	private int theme = 3;
 	
 	// returns true if the current move is valid
 	// else return false
@@ -111,7 +111,7 @@ public class GameGrid {
 				CheckerPiece temp = new CheckerPiece(row+", "+col, row , col);
 				
 				if(theme == 3) {
-					temp.setShape(new Text("COOL"));
+					temp.setShape(new Text("BRUH"));
 				}else if (theme == 2) {
 					temp.setShape(new Circle(1.5));
 				}else if (theme == 1) {
@@ -155,5 +155,9 @@ public class GameGrid {
 	
 	public GridPane getGrid() {
 		return gameGrid;
+	}
+	
+	public void changeTheme(int i) {
+		this.theme = i;
 	}
 }
