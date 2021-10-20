@@ -82,12 +82,19 @@ public class JavaFXTemplate extends Application {
 		// create grid object
 		GameGrid gameGrid = new GameGrid();
 		
+		
 		if (choiceBox.getValue() == "Theme 1") {
+			choiceBox.setOnAction(e -> gameGrid.changeTheme(1));
 			gameGrid.changeTheme(1);
+			gameGrid.buildArray();
 		} else if (choiceBox.getValue() == "Theme 2") {
+			choiceBox.setOnAction(e -> gameGrid.changeTheme(2));
 			gameGrid.changeTheme(2);
+			gameGrid.buildArray();
 		}else if (choiceBox.getValue() == "Theme 3") {
+			choiceBox.setOnAction(e -> gameGrid.changeTheme(3));
 			gameGrid.changeTheme(3);
+			gameGrid.buildArray();
 		}
 		
 		gameGrid.getGrid().setAlignment(Pos.CENTER);
@@ -98,7 +105,9 @@ public class JavaFXTemplate extends Application {
 		inGamePane.setCenter(gameGrid.getGrid());
 		backButton.setOnAction(e -> primaryStage.setScene(welcomeScreen));
 		
+		
 		// Creating an array of buttons that will be used in the gridpane
+		
 		gameGrid.buildArray();
 		//setCheckerActions();
 		ingameScreen = new Scene(inGamePane, 700,700);

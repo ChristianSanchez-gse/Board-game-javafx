@@ -49,4 +49,5 @@ public class CheckerPiece extends Button{
 	public int getPlayer() {
 		return this.player;
 	}
+	
 }
