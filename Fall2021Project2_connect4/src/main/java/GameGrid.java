@@ -35,8 +35,7 @@ public class GameGrid {
 	// Changes the color to the corresponding player
 	// sets the checkerpiece to occupied
 	// adds the play to the stack.
-	private void makePlay(CheckerPiece checker) {
-
+	private void makePlay(CheckerPiece checker) {		
 		// if the stack is empty or the last move was player 1, make changes for player two
 		if (playHistory.isEmpty() == true || playHistory.peek().getPlayer() == 1){
 			checkerArr[checker.getRow()][checker.getCol()].setStyle("-fx-background-color: #00b3ff");
@@ -53,16 +52,45 @@ public class GameGrid {
 		
 	}
 
-	// updates all of the variables within the checkerpiece object
-	// after it has been determined that the current move is a valid move
-	public void updateChecker() {
-		
-	}
 	
 	// gets called whenever a move is made in order to stop the game
 	// if a winner is found
-	public void checkWinner() {
+	public boolean checkWinner(CheckerPiece checker) {
+		// keeps track of the valid moves that the algorithm finds.
+		// when it reaches 4, the winner is found.
+		int validMoves = 1;
+		CheckerPiece origin = checker;
+		// traversing horizontally
+		while(checker.getPlayer() == origin.getPlayer() && checker.getCol() > 0) {
+			checker = checkerArr[checker.getRow()][checker.getCol()-1];
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol());
+			if(validMoves++ == 4) {return true;}
+		}
+		checker = origin;
+		while(checker.getPlayer() == origin.getPlayer() &&  checker.getCol() < 6) {
+			checker = checkerArr[checker.getRow()][checker.getCol()+1];
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol());
+			if(validMoves++ == 4) {return true;}
+		}
+		validMoves = 1;
 		
+		// traversing diagonal left
+		while(checker.getPlayer() == origin.getPlayer() && checker.getCol() > 0 && checker.getRow() > 0) {
+			checker = checkerArr[checker.getRow()-1][checker.getCol()-1];
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol());
+			if(validMoves++ == 4) {return true;}
+		}
+		checker = origin;
+		while(checker.getPlayer() == origin.getPlayer() && checker.getCol() < 6 && checker.getRow() < 5) {
+			checker = checkerArr[checker.getRow()+1][checker.getCol()+1];
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol());
+			if(validMoves++ == 4) {return true;}
+		}
+		// traversing downward
+		
+		// traversing diagonal right
+		
+		return false;
 	}
 	
 	public void buildArray() {	
@@ -91,6 +119,7 @@ public class GameGrid {
 		System.out.println("Valid : " + isValid(checker));
 		if (isValid(checker)) {
 			moveDown(checker);
+			if (checkWinner(checker)) {System.out.println("FUCKIN WINNING MOVE RIGHT THERE");}
 		} else {
 			System.out.println("invalid move, do nothing.");
 		}
