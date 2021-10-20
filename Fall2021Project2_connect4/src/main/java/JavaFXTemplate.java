@@ -81,6 +81,15 @@ public class JavaFXTemplate extends Application {
 		BorderPane inGamePane = new BorderPane();
 		// create grid object
 		GameGrid gameGrid = new GameGrid();
+		
+		if (choiceBox.getValue() == "Theme 1") {
+			gameGrid.changeTheme(1);
+		} else if (choiceBox.getValue() == "Theme 2") {
+			gameGrid.changeTheme(2);
+		}else if (choiceBox.getValue() == "Theme 3") {
+			gameGrid.changeTheme(3);
+		}
+		
 		gameGrid.getGrid().setAlignment(Pos.CENTER);
 		
 		// My attempt at using a borderpane to set the options at the very top and the game grid in the center
@@ -98,7 +107,7 @@ public class JavaFXTemplate extends Application {
 		// showing the initial screen
 		///////////////////////////////////
 		primaryStage.setScene(welcomeScreen);
-		primaryStage.setFullScreen(true);
+		//primaryStage.setFullScreen(true);
 		primaryStage.show();
 	}
 	
