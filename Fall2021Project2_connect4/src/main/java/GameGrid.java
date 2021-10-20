@@ -1,11 +1,21 @@
 import java.util.Stack;
 
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Arc;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.CubicCurve;
+import javafx.scene.shape.Polygon;
+import javafx.scene.shape.QuadCurve;
+import javafx.scene.shape.Shape;
+import javafx.scene.shape.TriangleMesh;
+import javafx.scene.text.Text;
 
 public class GameGrid {
 	Stack<CheckerPiece> playHistory = new Stack<CheckerPiece>();
 	GridPane gameGrid = new GridPane();
 	private final CheckerPiece[][] checkerArr = new CheckerPiece[6][7];
+	
+	int theme = 1;
 	
 	// returns true if the current move is valid
 	// else return false
@@ -99,6 +109,21 @@ public class GameGrid {
 		for(int row = 0; row < 6; row++) {
 			for(int col = 0; col < 7; col++) {
 				CheckerPiece temp = new CheckerPiece(row+", "+col, row , col);
+				
+				if(theme == 3) {
+					temp.setShape(new Text("COOL"));
+				}else if (theme == 2) {
+					temp.setShape(new Circle(1.5));
+				}else if (theme == 1) {
+					Polygon polygon = new Polygon();
+					polygon.getPoints().addAll(new Double[]{
+					    4.0, 5.5,
+					    20.0, 10.0,
+					    10.0, 20.0 });
+					temp.setShape(polygon);
+				}
+				
+				temp.setPrefSize(70, 70);
 				
 				gameGrid.add(temp,col,row);
 				// new CheckerPiece(i+", "+j, i , j), i , j

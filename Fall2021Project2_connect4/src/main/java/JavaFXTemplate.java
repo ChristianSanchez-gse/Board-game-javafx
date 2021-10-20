@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -20,9 +21,23 @@ public class JavaFXTemplate extends Application {
 	Scene optionsScreen;
 	Scene rulesScreen;
 	
+	
 	// The gridpane and array that will be used for buttons
 	
-	
+//	public void setTheme(int themeChosen) {
+//		if (themeChosen == 1) {
+//			theme = 1;
+//		} else if (themeChosen == 2) {
+//			theme = 2;
+//			
+//		}else if (themeChosen == 3) {
+//			theme = 3;
+//		}
+//	}
+//	
+//	public static int getTheme() {
+//		return theme;
+//	}
 	
 	
 	public static void main(String[] args) {
@@ -54,9 +69,11 @@ public class JavaFXTemplate extends Application {
 		Button backButton = new Button("back (this button will be deleted)");
 		
 		HBox topButtons = new HBox(optionsButton, themesButton, undoButton, backButton);
+		topButtons.setAlignment(Pos.TOP_CENTER);
 		BorderPane inGamePane = new BorderPane();
 		// create grid object
 		GameGrid gameGrid = new GameGrid();
+		gameGrid.getGrid().setAlignment(Pos.CENTER);
 		
 		// My attempt at using a borderpane to set the options at the very top and the game grid in the center
 		// of the screen... didnt work but we definitely should use borderpane for this.
