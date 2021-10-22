@@ -224,8 +224,7 @@ public class GameGrid {
 	}
 	public void changeTheme3() {
 		this.theme = 3;
-<<<<<<< HEAD
-		//buildArray();
+
 		themeHelper();
 		
 		System.out.println("The theme has been changed1");
@@ -267,14 +266,14 @@ public class GameGrid {
 				
 			}
 		}
-
+		
 		
 	}
 	
-=======
-		buildArray();
-		System.out.println("The theme has been changed");
-	}
+
+//		buildArray();
+//		System.out.println("The theme has been changed");
+
 	
 	// Pops a play from the stack and resets the specific
 	// Button back to its default values.
@@ -288,5 +287,5 @@ public class GameGrid {
 		checkerArr[temp.getRow()][temp.getCol()].setPlayer(0);
 		checkerArr[temp.getRow()][temp.getCol()].setOccupied(false);
 	}
->>>>>>> be22b5aa2c5b4bbe276417164b698101ad4e3d13
 }
+

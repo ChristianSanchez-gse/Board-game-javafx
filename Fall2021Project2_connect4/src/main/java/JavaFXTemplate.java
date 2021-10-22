@@ -60,12 +60,13 @@ public class JavaFXTemplate extends Application {
 		
 		//choiceBox.addEventHandler(, null);
 		
+		
 		HBox topButtons = new HBox(optionsButton, choiceBox, undoButton, backButton);
 		topButtons.setAlignment(Pos.TOP_CENTER);
 		BorderPane inGamePane = new BorderPane();
 		// create grid object
 		GameGrid gameGrid = new GameGrid();
-<<<<<<< HEAD
+
 		
 		
 
@@ -83,23 +84,23 @@ public class JavaFXTemplate extends Application {
 		    
 		    
 		});
-=======
-		// Changing the theme
-		if (choiceBox.getValue() == "Theme 1") {
-			choiceBox.setOnAction(e -> gameGrid.changeTheme1());
-			//gameGrid.changeTheme(1);
-			
-			gameGrid.buildArray();
-		} else if (choiceBox.getValue() == "Theme 2") {
-			choiceBox.setOnAction(e -> gameGrid.changeTheme2());
-			//gameGrid.changeTheme(2);
-			gameGrid.buildArray();
-		}else if (choiceBox.getValue() == "Theme 3") {
-			choiceBox.setOnAction(e -> gameGrid.changeTheme3());
-			//gameGrid.changeTheme(3);
-			gameGrid.buildArray();
-		}
->>>>>>> be22b5aa2c5b4bbe276417164b698101ad4e3d13
+
+//		// Changing the theme
+//		if (choiceBox.getValue() == "Theme 1") {
+//			choiceBox.setOnAction(e -> gameGrid.changeTheme1());
+//			//gameGrid.changeTheme(1);
+//			
+//			gameGrid.buildArray();
+//		} else if (choiceBox.getValue() == "Theme 2") {
+//			choiceBox.setOnAction(e -> gameGrid.changeTheme2());
+//			//gameGrid.changeTheme(2);
+//			gameGrid.buildArray();
+//		}else if (choiceBox.getValue() == "Theme 3") {
+//			choiceBox.setOnAction(e -> gameGrid.changeTheme3());
+//			//gameGrid.changeTheme(3);
+//			gameGrid.buildArray();
+//		}
+
 		
 		// Setting action for buttons
 		undoButton.setOnAction(e -> gameGrid.Undo());
