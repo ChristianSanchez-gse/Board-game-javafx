@@ -69,41 +69,79 @@ public class GameGrid {
 	public boolean checkWinner(CheckerPiece checker) {
 		// keeps track of the valid moves that the algorithm finds.
 		// when it reaches 4, the winner is found.
-		System.out.println("We are checking the winner");
 		System.out.println(checker);
 		
 		int validMoves = 1;
 		CheckerPiece origin = checker;
 		// traversing horizontally
+		System.out.println("Traversing Horizontally");
 		while(checker.getPlayer() == origin.getPlayer() && checker.getCol() > 0) {
 			checker = checkerArr[checker.getRow()][checker.getCol()-1];
-			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol());
-			if(validMoves++ == 4) {return true;}
+			validMoves++;
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol() + "and the counter is: " + validMoves);
+			if(validMoves == 4) {return true;}
 		}
+		validMoves--;
 		checker = origin;
 		while(checker.getPlayer() == origin.getPlayer() &&  checker.getCol() < 6) {
 			checker = checkerArr[checker.getRow()][checker.getCol()+1];
-			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol());
-			if(validMoves++ == 4) {return true;}
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol() + "and the counter is: " + validMoves);
+			validMoves++;
+			if(validMoves == 4) {return true;}
 		}
 		validMoves = 1;
 		
 		// traversing diagonal left
-		while(checker.getPlayer() == origin.getPlayer() && checker.getCol() > 0 && checker.getRow() > 0) {
+		System.out.println("Traversing diagonal left");
+		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() > 0 && checker.getCol() > 0) {
 			checker = checkerArr[checker.getRow()-1][checker.getCol()-1];
-			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol());
-			if(validMoves++ == 4) {return true;}
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol() + "and the counter is: " + validMoves);
+			validMoves++;
+			if(validMoves == 4) {return true;}
 		}
+		validMoves--;
 		checker = origin;
-		while(checker.getPlayer() == origin.getPlayer() && checker.getCol() < 6 && checker.getRow() < 5) {
+		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5 && checker.getCol() < 6) {
 			checker = checkerArr[checker.getRow()+1][checker.getCol()+1];
-			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol());
-			if(validMoves++ == 4) {return true;}
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol() + "and the counter is: " + validMoves);
+			validMoves++;
+			if(validMoves == 4) {return true;}
 		}
+		validMoves = 1;
+		
 		// traversing downward
+		System.out.println("Traversing downward");
+		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() > 0) {
+			checker = checkerArr[checker.getRow()-1][checker.getCol()];
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol() + "and the counter is: " + validMoves);
+			validMoves++;
+			if(validMoves == 4) {return true;}
+		}
+		validMoves--;
+		checker = origin;
+		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5) {
+			checker = checkerArr[checker.getRow()+1][checker.getCol()];
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol() + "and the counter is: " + validMoves);
+			validMoves++;
+			if(validMoves == 4) {return true;}
+		}
+		validMoves = 1;
 		
 		// traversing diagonal right
-		
+		System.out.println("Traversing diagonal right");
+		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() > 0 && checker.getCol() > 6) {
+			checker = checkerArr[checker.getRow()-1][checker.getCol()+1];
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol() + "and the counter is: " + validMoves);
+			validMoves++;
+			if(validMoves == 4) {return true;}
+		}
+		checker = origin;
+		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5 && checker.getCol() > 0) {
+			checker = checkerArr[checker.getRow()+1][checker.getCol()-1];
+			System.out.println("We have traversed into Node: " + checker.getRow() + ", " + checker.getCol() + "and the counter is: " + validMoves);
+			validMoves++;
+			if(validMoves == 4) {return true;}
+		}
 		return false;
 	}
 	
@@ -148,7 +186,6 @@ public class GameGrid {
 		System.out.println("Valid : " + isValid(checker));
 		if (isValid(checker)) {
 			checker = moveDown(checker);
-			System.out.println("we moved down");
 			if (checkWinner(checker)) {System.out.println("FUCKIN WINNING MOVE RIGHT THERE");}
 		} else {
 			System.out.println("invalid move, do nothing.");
