@@ -18,6 +18,8 @@ public class GameGrid {
 	ListView<String> infoDisplay = new ListView<String>();
 	private final CheckerPiece[][] checkerArr = new CheckerPiece[6][7];
 	private int theme;
+	String p1color = "-fx-background-color: #00b3ff";
+	String p2color = "-fx-background-color: #00ff99";
 	
 	// returns true if the current move is valid
 	// else return false
@@ -51,11 +53,11 @@ public class GameGrid {
 	private void makePlay(CheckerPiece checker) {		
 		// if the stack is empty or the last move was player 1, make changes for player two
 		if (playHistory.isEmpty() == true || playHistory.peek().getPlayer() == 1){
-			checkerArr[checker.getRow()][checker.getCol()].setStyle("-fx-background-color: #00b3ff");
+			checkerArr[checker.getRow()][checker.getCol()].setStyle(p1color);
 			checkerArr[checker.getRow()][checker.getCol()].setPlayer(2);
 			System.out.println("it is now player 1's turn");
 		} else {
-				checkerArr[checker.getRow()][checker.getCol()].setStyle("-fx-background-color: #00ff99");
+				checkerArr[checker.getRow()][checker.getCol()].setStyle(p2color);
 				checkerArr[checker.getRow()][checker.getCol()].setPlayer(1);
 				System.out.println("it is now player 2's turn");
 		}
@@ -209,14 +211,20 @@ public class GameGrid {
 	public void changeTheme1() {
 		this.theme = 1;	
 		//buildArray();
+		p1color ="-fx-background-color: #A52A2A";
+		p2color = "-fx-background-color: #FFD700";
 		themeHelper();
 		
-		System.out.println("The theme has been changed3");
+		
+		System.out.println("The theme has been changed1");
 		
 	}
 	public void changeTheme2() {
 		this.theme = 2;
 		//buildArray();
+		
+		p1color ="-fx-background-color: #FF69B4";
+		p2color = "-fx-background-color: #7CFC00";
 		themeHelper();
 		
 		System.out.println("The theme has been changed2");
@@ -225,9 +233,11 @@ public class GameGrid {
 	public void changeTheme3() {
 		this.theme = 3;
 
-		themeHelper();
 		
-		System.out.println("The theme has been changed1");
+		p1color ="-fx-background-color: #F08080";
+		p2color = "-fx-background-color: #ADD8E6";
+		themeHelper();
+		System.out.println("The theme has been changed3");
 		
 	}
 	
@@ -239,16 +249,17 @@ public class GameGrid {
 				if (theme == 1) {
 					checkerArr[r][c].setShape(new Text("BRUH"));
 					if (checkerArr[r][c].getPlayer() == 1) {
-						
+						checkerArr[r][c].setStyle(p1color);
 					} else if (checkerArr[r][c].getPlayer() == 2) {
-						
+						checkerArr[r][c].setStyle(p2color);
 					}
+					
 				} else if (theme ==2) {
 					checkerArr[r][c].setShape(new Circle(1.5));
 					if (checkerArr[r][c].getPlayer() == 1) {
-						
+						checkerArr[r][c].setStyle(p1color);
 					} else if (checkerArr[r][c].getPlayer() == 2) {
-						
+						checkerArr[r][c].setStyle(p2color);
 					}
 				} else if (theme == 3) {
 					Polygon polygon = new Polygon();
@@ -258,9 +269,9 @@ public class GameGrid {
 					    10.0, 20.0 });
 					checkerArr[r][c].setShape(polygon);
 					if (checkerArr[r][c].getPlayer() == 1) {
-						
+						checkerArr[r][c].setStyle(p1color);
 					} else if (checkerArr[r][c].getPlayer() == 2) {
-						
+						checkerArr[r][c].setStyle(p2color);
 					}
 				}
 				

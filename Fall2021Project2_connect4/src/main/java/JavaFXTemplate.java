@@ -85,21 +85,7 @@ public class JavaFXTemplate extends Application {
 		    
 		});
 
-//		// Changing the theme
-//		if (choiceBox.getValue() == "Theme 1") {
-//			choiceBox.setOnAction(e -> gameGrid.changeTheme1());
-//			//gameGrid.changeTheme(1);
-//			
-//			gameGrid.buildArray();
-//		} else if (choiceBox.getValue() == "Theme 2") {
-//			choiceBox.setOnAction(e -> gameGrid.changeTheme2());
-//			//gameGrid.changeTheme(2);
-//			gameGrid.buildArray();
-//		}else if (choiceBox.getValue() == "Theme 3") {
-//			choiceBox.setOnAction(e -> gameGrid.changeTheme3());
-//			//gameGrid.changeTheme(3);
-//			gameGrid.buildArray();
-//		}
+
 
 		
 		// Setting action for buttons
