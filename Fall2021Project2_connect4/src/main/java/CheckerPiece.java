@@ -20,8 +20,8 @@ public class CheckerPiece extends Button{
 		return col;
 	}
 	public void setCol(int col) {
-		this.col = col;
-	}
+		this.col = col; 
+	} 
 	public int getRow() {
 		return row;
 	}

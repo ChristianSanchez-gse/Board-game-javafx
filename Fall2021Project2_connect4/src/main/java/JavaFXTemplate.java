@@ -74,7 +74,9 @@ public class JavaFXTemplate extends Application {
 		
 		ChoiceBox<String> choiceBox = new ChoiceBox<>();
 		choiceBox.getItems().addAll("Theme 1", "Theme 2", "Theme 3");
-		choiceBox.setValue("Theme 1");
+		choiceBox.setValue("Theme 3");
+		
+		//choiceBox.addEventHandler(, null);
 		
 		HBox topButtons = new HBox(optionsButton, choiceBox, undoButton, backButton);
 		topButtons.setAlignment(Pos.TOP_CENTER);
