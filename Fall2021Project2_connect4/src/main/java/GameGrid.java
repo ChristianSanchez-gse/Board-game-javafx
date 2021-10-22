@@ -114,18 +114,19 @@ public class GameGrid {
 			for(int col = 0; col < 7; col++) {
 				CheckerPiece temp = new CheckerPiece(row+", "+col, row , col);
 				
-				if(theme == 3) {
-					temp.setShape(new Text("BRUH"));
-				}else if (theme == 2) {
-					temp.setShape(new Circle(1.5));
-				}else if (theme == 1) {
-					Polygon polygon = new Polygon();
-					polygon.getPoints().addAll(new Double[]{
-					    4.0, 5.5,
-					    20.0, 10.0,
-					    10.0, 20.0 });
-					temp.setShape(polygon);
-				}
+//				if(theme == 1) {
+//					temp.setShape(new Text("BRUH"));
+//				}else if (theme == 2) {
+//					temp.setShape(new Circle(1.5));
+//				}else if (theme ==3) {
+//					Polygon polygon = new Polygon();
+//					polygon.getPoints().addAll(new Double[]{
+//					    4.0, 5.5,
+//					    20.0, 10.0,
+//					    10.0, 20.0 });
+//					temp.setShape(polygon);
+//				}
+				
 				
 				temp.setPrefSize(70, 70);
 				
@@ -166,31 +167,66 @@ public class GameGrid {
 	
 	public void changeTheme1() {
 		this.theme = 1;	
-		buildArray();
+		//buildArray();
+		themeHelper();
 		
-		System.out.println("The theme has been changed");
+		System.out.println("The theme has been changed3");
 		
 	}
 	public void changeTheme2() {
 		this.theme = 2;
-		buildArray();
+		//buildArray();
+		themeHelper();
 		
-		System.out.println("The theme has been changed");
+		System.out.println("The theme has been changed2");
 		
 	}
 	public void changeTheme3() {
 		this.theme = 3;
-		buildArray();
+		//buildArray();
+		themeHelper();
 		
-		System.out.println("The theme has been changed");
+		System.out.println("The theme has been changed1");
 		
 	}
 	
-//	public void themeHelper() {
-//		stack copy = new stack<
-//		for (chec x: playHistory) {
-//			
-//		}
-//	}
+	public void themeHelper() {
+		
+
+		for (int r = 0; r < 6; r++) {
+			for (int c = 0; c < 7; c++) {
+				if (theme == 1) {
+					checkerArr[r][c].setShape(new Text("BRUH"));
+					if (checkerArr[r][c].getPlayer() == 1) {
+						
+					} else if (checkerArr[r][c].getPlayer() == 2) {
+						
+					}
+				} else if (theme ==2) {
+					checkerArr[r][c].setShape(new Circle(1.5));
+					if (checkerArr[r][c].getPlayer() == 1) {
+						
+					} else if (checkerArr[r][c].getPlayer() == 2) {
+						
+					}
+				} else if (theme == 3) {
+					Polygon polygon = new Polygon();
+					polygon.getPoints().addAll(new Double[]{
+					    4.0, 5.5,
+					    20.0, 10.0,
+					    10.0, 20.0 });
+					checkerArr[r][c].setShape(polygon);
+					if (checkerArr[r][c].getPlayer() == 1) {
+						
+					} else if (checkerArr[r][c].getPlayer() == 2) {
+						
+					}
+				}
+				
+			}
+		}
+
+		
+	}
 	
 }
