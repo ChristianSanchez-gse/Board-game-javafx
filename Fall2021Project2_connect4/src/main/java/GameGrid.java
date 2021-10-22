@@ -1,5 +1,6 @@
 import java.util.Stack;
 
+import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
@@ -222,12 +223,32 @@ public class GameGrid {
 		System.out.println("The theme has been changed");
 		
 	}
-	
-//	public void themeHelper() {
-//		stack copy = new stack<
-//		for (chec x: playHistory) {
-//			
-//		}
-//	}
+
+	public void Undo() {
+		if (playHistory.isEmpty() == true) {
+			System.out.println("The stack is empty!!");
+			return;
+		}
+		CheckerPiece temp = playHistory.pop();
+		checkerArr[temp.getRow()][temp.getCol()].setStyle(null);
+		checkerArr[temp.getRow()][temp.getCol()].setPlayer(0);
+		checkerArr[temp.getRow()][temp.getCol()].setOccupied(false);
+		/*
+		System.out.println("The undo button was clicked");
+		CheckerPiece temp = playHistory.pop();
+		System.out.println("--------Removing at NODE: " + temp.getRow() +", " +temp.getCol());
+		System.out.println("from player " + temp.getPlayer());
+		CheckerPiece newChecker = new CheckerPiece("", temp.getRow(), temp.getCol());
+		checkerArr[temp.getRow()][temp.getCol()] = newChecker;
+		System.out.println("Values of the new NODE: ");
+		System.out.println("------------------------------");
+		System.out.println("Location: " + checkerArr[temp.getRow()][temp.getCol()].getRow() + ", " + checkerArr[temp.getRow()][temp.getCol()].getCol());
+		checkerArr[temp.getRow()][temp.getCol()].setPlayer(23);
+		checkerArr[temp.getRow()][temp.getCol()].setStyle("-fx-background-color: #f54242");
+		System.out.println("Player: " + checkerArr[temp.getRow()][temp.getCol()].getPlayer());
+		gameGrid.getChildren().removeAll();
+		//gameGrid.add(newChecker, newChecker.getCol(), newChecker.getRow());
+		 */
+	}
 	
 }
