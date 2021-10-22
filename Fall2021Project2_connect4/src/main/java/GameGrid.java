@@ -129,7 +129,6 @@ public class GameGrid {
 				// new CheckerPiece(i+", "+j, i , j), i , j
 				temp.setOnAction(e -> pressButton(temp));
 				checkerArr[row][col] = temp;
-				checkerArr[row][col].setPlayer(-1);
 			}
 		}
 	}
@@ -160,10 +159,33 @@ public class GameGrid {
 	
 
 	
-	public void changeTheme(int i) {
-		this.theme = i;
+	public void changeTheme1() {
+		this.theme = 1;	
+		buildArray();
 		
 		System.out.println("The theme has been changed");
 		
 	}
+	public void changeTheme2() {
+		this.theme = 2;
+		buildArray();
+		
+		System.out.println("The theme has been changed");
+		
+	}
+	public void changeTheme3() {
+		this.theme = 3;
+		buildArray();
+		
+		System.out.println("The theme has been changed");
+		
+	}
+	
+//	public void themeHelper() {
+//		stack copy = new stack<
+//		for (chec x: playHistory) {
+//			
+//		}
+//	}
+	
 }
