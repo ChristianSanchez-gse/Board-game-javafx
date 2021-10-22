@@ -60,7 +60,7 @@ public class JavaFXTemplate extends Application {
 		VBox box = new VBox(play);
 		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
 		box.setAlignment(Pos.CENTER);
-		welcomeScreen = new Scene(box, 700,700);
+		welcomeScreen = new Scene(box, 1080,1280);
 		
 		
 		
@@ -114,7 +114,7 @@ public class JavaFXTemplate extends Application {
 		
 		gameGrid.buildArray();
 		//setCheckerActions();
-		ingameScreen = new Scene(inGamePane, 700,700);
+		ingameScreen = new Scene(inGamePane, 1080,1280);
 		
 		///////////////////////////////////
 		// showing the initial screen
