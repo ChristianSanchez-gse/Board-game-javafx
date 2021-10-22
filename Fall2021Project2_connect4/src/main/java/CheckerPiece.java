@@ -29,26 +29,16 @@ public class CheckerPiece extends Button{
 	public void setRow(int row) {
 		this.row = row;
 	}
-	/*
-	EventHandler<ActionEvent> myHandler = new EventHandler<ActionEvent>() {
-		public void handle (ActionEvent e) {
-			colors.setStyle("-fx-background-color: #00ff00");
-		}
-	};
-*/
 	public boolean isOccupied() {
 		return occupied;
 	}
 	public void setOccupied(boolean b) {
 		this.occupied = b;
-		
 	}
 	public void setPlayer(int i) {
 		this.player = i;
-		
 	}
 	public int getPlayer() {
 		return this.player;
 	}
-	
 }
