@@ -28,7 +28,7 @@ public class GameGrid {
 	
 	// Moves the checkerpiece down if it is clicked above
 	// a an empty spot.
-	public void moveDown(CheckerPiece checker) {
+	public CheckerPiece moveDown(CheckerPiece checker) {
 		// traverse the all the way down until 1-an occupied node
 		while(checkerArr[checker.getRow()][checker.getCol()].isOccupied() == false && checker.getRow() != 5) {
 			checker  = checkerArr[checker.getRow() + 1][checker.getCol()];
@@ -37,9 +37,10 @@ public class GameGrid {
 		if(checkerArr[checker.getRow()][checker.getCol()].isOccupied() == true) {
 			checker = checkerArr[checker.getRow()-1][checker.getCol()];
 		}
-		
+		System.out.println("We moved the node down to " + checker.getRow() + ", " + checker.getCol());
 		// Make all the changes 
 		makePlay(checker);
+		return checker;
 	}
 	
 	// Changes the color to the corresponding player
@@ -68,6 +69,9 @@ public class GameGrid {
 	public boolean checkWinner(CheckerPiece checker) {
 		// keeps track of the valid moves that the algorithm finds.
 		// when it reaches 4, the winner is found.
+		System.out.println("We are checking the winner");
+		System.out.println(checker);
+		
 		int validMoves = 1;
 		CheckerPiece origin = checker;
 		// traversing horizontally
@@ -129,7 +133,6 @@ public class GameGrid {
 				// new CheckerPiece(i+", "+j, i , j), i , j
 				temp.setOnAction(e -> pressButton(temp));
 				checkerArr[row][col] = temp;
-				checkerArr[row][col].setPlayer(-1);
 			}
 		}
 	}
@@ -144,7 +147,8 @@ public class GameGrid {
 		System.out.println("You clicked: ROW: " + checker.getRow() + ", COL: " + checker.getCol());
 		System.out.println("Valid : " + isValid(checker));
 		if (isValid(checker)) {
-			moveDown(checker);
+			checker = moveDown(checker);
+			System.out.println("we moved down");
 			if (checkWinner(checker)) {System.out.println("FUCKIN WINNING MOVE RIGHT THERE");}
 		} else {
 			System.out.println("invalid move, do nothing.");

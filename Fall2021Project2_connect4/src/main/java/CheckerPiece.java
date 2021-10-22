@@ -15,6 +15,7 @@ public class CheckerPiece extends Button{
 		this.col = col;
 		this.row = row;
 		this.occupied = false;
+		this.player = 0;
 	}
 	public int getCol() {
 		return col;
