@@ -201,7 +201,9 @@ public class GameGrid {
 		return gameGrid;
 	}
 	
-
+	public ListView<String> getList() {
+		return infoDisplay;
+	}
 	
 	public void changeTheme1() {
 		this.theme = 1;	
