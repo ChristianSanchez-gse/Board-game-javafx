@@ -129,6 +129,7 @@ public class GameGrid {
 				// new CheckerPiece(i+", "+j, i , j), i , j
 				temp.setOnAction(e -> pressButton(temp));
 				checkerArr[row][col] = temp;
+				checkerArr[row][col].setPlayer(-1);
 			}
 		}
 	}
@@ -157,8 +158,12 @@ public class GameGrid {
 		return gameGrid;
 	}
 	
+
+	
 	public void changeTheme(int i) {
 		this.theme = i;
+		
 		System.out.println("The theme has been changed");
+		
 	}
 }
