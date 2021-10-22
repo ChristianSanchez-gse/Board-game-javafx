@@ -26,24 +26,6 @@ public class JavaFXTemplate extends Application {
 	Scene rulesScreen;
 	
 	
-	// The gridpane and array that will be used for buttons
-	
-//	public void setTheme(int themeChosen) {
-//		if (themeChosen == 1) {
-//			theme = 1;
-//		} else if (themeChosen == 2) {
-//			theme = 2;
-//			
-//		}else if (themeChosen == 3) {
-//			theme = 3;
-//		}
-//	}
-//	
-//	public static int getTheme() {
-//		return theme;
-//	}
-	
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -123,10 +105,6 @@ public class JavaFXTemplate extends Application {
 		//primaryStage.setFullScreen(true);
 		primaryStage.show();
 	}
-	
-	// This function adds buttons to both buttonArr
-	// and gameGrid which are declared at the top of this class.
-
 	
 
 	
