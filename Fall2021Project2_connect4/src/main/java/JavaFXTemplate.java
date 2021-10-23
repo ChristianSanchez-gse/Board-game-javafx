@@ -1,4 +1,6 @@
 import java.awt.Insets;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -10,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -38,7 +42,12 @@ public class JavaFXTemplate extends Application {
 		// setting up the Welcome screen
 		//////////////////////////////////////
 		
-		Button play = new Button("Welcome Screen. Press this to move on");
+		InputStream stream = new FileInputStream("C:\\Users\\andre\\OneDrive\\Desktop\\playButton.png");
+		Image image = new Image(stream);
+		ImageView imageView = new ImageView();
+		imageView.setImage(image);
+		Button play = new Button();
+		play.setGraphic(imageView);
 		VBox box = new VBox(play);
 		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
 		box.setAlignment(Pos.CENTER);
