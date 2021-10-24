@@ -53,7 +53,7 @@ public class JavaFXTemplate extends Application {
 		VBox box = new VBox(play);
 		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
 		box.setAlignment(Pos.CENTER);
-		welcomeScreen = new Scene(box, 1000,1000);
+		welcomeScreen = new Scene(box, 1000,900);
 		
 		
 		
@@ -85,7 +85,7 @@ public class JavaFXTemplate extends Application {
 			optionsDrop.setValue("Options");
 			primaryStage.setScene(ingameScreen);	
 		});
-		rulesScreen = new Scene(backbox, 1000,1000);		
+		rulesScreen = new Scene(backbox, 1000,900);		
 		
 		
 		// Dropdown for themes
@@ -163,7 +163,7 @@ public class JavaFXTemplate extends Application {
 		
 		gameGrid.buildArray();
 		gameGrid.changeTheme2();// initializing the theme
-		ingameScreen = new Scene(inGamePane, 1000,1000);
+		ingameScreen = new Scene(inGamePane, 1000,900);
 		
 		///////////////////////////////////
 		// showing the initial screen
