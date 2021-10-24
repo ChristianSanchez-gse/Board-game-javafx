@@ -1,6 +1,7 @@
 import java.awt.Insets;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URL;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -44,9 +45,7 @@ public class JavaFXTemplate extends Application {
 		//////////////////////////////////////
 		// setting up the Welcome screen
 		//////////////////////////////////////
-		
-		InputStream stream = new FileInputStream("C:\\Users\\andre\\OneDrive\\Desktop\\Project\\Board-game-javafx\\Fall2021Project2_connect4\\src\\main\\java\\playButton.png");
-		Image image = new Image(stream);
+		Image image = new Image(getClass().getResourceAsStream("playButton.png"));
 		ImageView imageView = new ImageView();
 		imageView.setImage(image);
 		Button play = new Button();
@@ -86,8 +85,7 @@ public class JavaFXTemplate extends Application {
 		// rules screen info
 		Text rules = new Text();
 		rules.setText("These are the rules");
-		InputStream rulestream = new FileInputStream("C:\\Users\\andre\\OneDrive\\Desktop\\Project\\Board-game-javafx\\Fall2021Project2_connect4\\src\\main\\java\\c4rules.png");
-		Image image2 = new Image(rulestream);
+		Image image2 = new Image(getClass().getResourceAsStream("c4Rules.png"));
 		ImageView imageView2 = new ImageView();
 		imageView2.setImage(image2);
 		rules.setX(100);
