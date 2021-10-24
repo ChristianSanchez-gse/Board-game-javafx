@@ -1,8 +1,6 @@
 import java.awt.Insets;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.net.URL;
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,10 +43,6 @@ public class JavaFXTemplate extends Application {
 		//////////////////////////////////////
 		// setting up the Welcome screen
 		//////////////////////////////////////
-<<<<<<< HEAD
-		
-=======
->>>>>>> 09f0243c0fff7920009879e13b5909eb984fac26
 		Image image = new Image(getClass().getResourceAsStream("playButton.png"));
 		ImageView imageView = new ImageView();
 		imageView.setImage(image);
@@ -146,6 +140,10 @@ public class JavaFXTemplate extends Application {
 		// of the screen... didnt work but we definitely should use borderpane for this.
 		inGamePane.setTop(topButtons);
 		inGamePane.setCenter(gameGrid.getGrid());
+		HBox bottom = new HBox();
+		bottom.getChildren().add(gameGrid.getList());
+		bottom.setAlignment(Pos.CENTER);
+		inGamePane.setBottom(bottom);
 		backButton.setOnAction(e -> primaryStage.setScene(welcomeScreen));
 		
 		
