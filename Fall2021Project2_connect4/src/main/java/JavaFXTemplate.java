@@ -117,6 +117,7 @@ public class JavaFXTemplate extends Application {
 		    //int selectedIndex = choiceBox.getSelectionModel().getSelectedIndex();
 		    Object selectedItem = choiceBox.getSelectionModel().getSelectedItem();
 		    if (selectedItem == "Theme 1") {
+		    	// change the window color
 		    	gameGrid.changeTheme1();
 		    } else if (selectedItem == "Theme 2"){
 		    	gameGrid.changeTheme2();
