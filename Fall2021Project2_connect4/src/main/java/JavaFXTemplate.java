@@ -72,8 +72,8 @@ public class JavaFXTemplate extends Application {
 		Image image2 = new Image(getClass().getResourceAsStream("c4Rules.png"));
 		ImageView imageView2 = new ImageView();
 		imageView2.setImage(image2);
-		imageView2.setFitWidth(700);
-		imageView2.setFitHeight(600);
+		imageView2.setFitWidth(1000);
+		imageView2.setFitHeight(900);
 		rules.setX(100);
 		rules.setY(100);
 		
@@ -113,16 +113,7 @@ public class JavaFXTemplate extends Application {
 		    if (selectedItem == "Default") {
 
 		    	gameGrid.changeTheme2();
-<<<<<<< HEAD
-		    	welcomeScreen.setFill(Color.GREEN);
 
-=======
-		    	//welcomeScreen.setFill(Color.GREEN);
-//		    	ingameScreen.setFill(Color.GREEN);
-//		    	optionsScreen.setFill(Color.GREEN);
-//		    	rulesScreen.setFill(Color.GREEN);
-		    	
->>>>>>> 203392104f454191faa3e06f52a4126143a1a9b7
 		    } else if (selectedItem == "Triangle"){
 		    	gameGrid.changeTheme3();
 
@@ -140,11 +131,9 @@ public class JavaFXTemplate extends Application {
 			if (selectedItem == "How To Play") {
 		    	primaryStage.setScene(rulesScreen);
 		    	
-<<<<<<< HEAD
 		    } else if (selectedItem == "new game"){
-=======
+
 		    } else if (selectedItem == "New Game"){
->>>>>>> 203392104f454191faa3e06f52a4126143a1a9b7
 		    	optionsDrop.setValue("Options");
 		    	gameGrid.newGame();
 		    	primaryStage.setScene(welcomeScreen);
