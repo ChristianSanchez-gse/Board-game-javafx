@@ -164,7 +164,7 @@ public class GameGrid {
 		gameGrid.setHgap(20);
 		for(int row = 0; row < 6; row++) {
 			for(int col = 0; col < 7; col++) {
-				CheckerPiece temp = new CheckerPiece(row+", "+col, row , col);
+				CheckerPiece temp = new CheckerPiece("", row , col);
 				temp.setPrefSize(70, 70);
 				gameGrid.add(temp,col,row);
 				temp.setOnAction(e -> pressButton(temp));

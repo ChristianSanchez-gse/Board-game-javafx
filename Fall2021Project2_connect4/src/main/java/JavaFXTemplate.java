@@ -58,7 +58,6 @@ public class JavaFXTemplate extends Application {
 		
 		
 		Button undoButton = new Button("Undo");
-		Button backButton = new Button("back (this button will be deleted)");
 		
 		//Drpdown for options
 		ChoiceBox<String> optionsDrop = new ChoiceBox<>();
@@ -91,13 +90,13 @@ public class JavaFXTemplate extends Application {
 		
 		// Dropdown for themes
 		ChoiceBox<String> choiceBox = new ChoiceBox<>();
-		choiceBox.getItems().addAll("Theme 1", "Theme 2", "Theme 3");
-		choiceBox.setValue("Theme 1");
+		choiceBox.getItems().addAll("Default", "Triangle", "Bruh");
+		choiceBox.setValue("Default");
 		
 		//choiceBox.addEventHandler(, null);
 		
 		
-		HBox topButtons = new HBox(optionsDrop, choiceBox, undoButton, backButton);
+		HBox topButtons = new HBox(optionsDrop, choiceBox, undoButton);
 		topButtons.setAlignment(Pos.TOP_CENTER);
 		BorderPane inGamePane = new BorderPane();
 		// create grid object
@@ -111,22 +110,22 @@ public class JavaFXTemplate extends Application {
 		choiceBox.setOnAction((event) -> {
 		    //int selectedIndex = choiceBox.getSelectionModel().getSelectedIndex();
 		    Object selectedItem = choiceBox.getSelectionModel().getSelectedItem();
-		    if (selectedItem == "Theme 1") {
+		    if (selectedItem == "Default") {
 		    	// change the window color
-		    	gameGrid.changeTheme1();
+		    	gameGrid.changeTheme2();
 		    	welcomeScreen.setFill(Color.GREEN);
 //		    	ingameScreen.setFill(Color.GREEN);
 //		    	optionsScreen.setFill(Color.GREEN);
 //		    	rulesScreen.setFill(Color.GREEN);
 		    	
-		    } else if (selectedItem == "Theme 2"){
-		    	gameGrid.changeTheme2();
+		    } else if (selectedItem == "Triangle"){
+		    	gameGrid.changeTheme3();
 //		    	welcomeScreen.setFill(Color.AQUAMARINE);
 //		    	ingameScreen.setFill(Color.AQUAMARINE);
 //		    	optionsScreen.setFill(Color.AQUAMARINE);
 //		    	rulesScreen.setFill(Color.AQUAMARINE);
-		    } else if (selectedItem == "Theme 3") {
-		    	gameGrid.changeTheme3();
+		    } else if (selectedItem == "Bruh") {
+		    	gameGrid.changeTheme1();
 //		    	welcomeScreen.setFill(Color.BLUEVIOLET);
 //		    	ingameScreen.setFill(Color.BLUEVIOLET);
 //		    	optionsScreen.setFill(Color.BLUEVIOLET);
@@ -170,7 +169,7 @@ public class JavaFXTemplate extends Application {
 		// Creating an array of buttons that will be used in the gridpane
 		
 		gameGrid.buildArray();
-		gameGrid.changeTheme1();// initializing the theme
+		gameGrid.changeTheme2();// initializing the theme
 		ingameScreen = new Scene(inGamePane, 1000,1000);
 		
 		///////////////////////////////////
