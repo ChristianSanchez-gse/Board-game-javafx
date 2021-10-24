@@ -45,6 +45,10 @@ public class JavaFXTemplate extends Application {
 		//////////////////////////////////////
 		// setting up the Welcome screen
 		//////////////////////////////////////
+<<<<<<< HEAD
+		
+=======
+>>>>>>> 09f0243c0fff7920009879e13b5909eb984fac26
 		Image image = new Image(getClass().getResourceAsStream("playButton.png"));
 		ImageView imageView = new ImageView();
 		imageView.setImage(image);
@@ -91,8 +95,11 @@ public class JavaFXTemplate extends Application {
 		rules.setX(100);
 		rules.setY(100);
 		//rules.setGraphic(imageView2);
-		Group root = new Group(rules);
-		rulesScreen = new Scene(root, 700,700);		
+		
+		Button rulesback = new Button("Back");
+		VBox backbox = new VBox(rulesback);
+		rulesback.setOnAction(e -> primaryStage.setScene(ingameScreen));
+		rulesScreen = new Scene(backbox, 700,700);		
 		
 		
 		// Dropdown for themes
