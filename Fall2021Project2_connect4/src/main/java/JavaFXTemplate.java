@@ -53,7 +53,7 @@ public class JavaFXTemplate extends Application {
 		VBox box = new VBox(play);
 		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
 		box.setAlignment(Pos.CENTER);
-		welcomeScreen = new Scene(box, 800,800);
+		welcomeScreen = new Scene(box, 1000,1000);
 		
 		
 		
@@ -75,6 +75,7 @@ public class JavaFXTemplate extends Application {
 			Object selectedItem = optionsDrop.getSelectionModel().getSelectedItem();
 			if (selectedItem == "how to play") {
 		    	primaryStage.setScene(rulesScreen);
+		    	
 		    } else if (selectedItem == "new game"){
 		    	
 		    } else if (selectedItem == "exit") {
@@ -101,7 +102,7 @@ public class JavaFXTemplate extends Application {
 			optionsDrop.setValue("Options");
 			primaryStage.setScene(ingameScreen);	
 		});
-		rulesScreen = new Scene(backbox, 700,700);		
+		rulesScreen = new Scene(backbox, 800,800);		
 		
 		
 		// Dropdown for themes
@@ -129,7 +130,7 @@ public class JavaFXTemplate extends Application {
 		    if (selectedItem == "Theme 1") {
 		    	// change the window color
 		    	gameGrid.changeTheme1();
-//		    	welcomeScreen.setFill(Color.GREEN);
+		    	welcomeScreen.setFill(Color.GREEN);
 //		    	ingameScreen.setFill(Color.GREEN);
 //		    	optionsScreen.setFill(Color.GREEN);
 //		    	rulesScreen.setFill(Color.GREEN);
@@ -162,25 +163,25 @@ public class JavaFXTemplate extends Application {
 		// of the screen... didnt work but we definitely should use borderpane for this.
 		inGamePane.setTop(topButtons);
 		inGamePane.setCenter(gameGrid.getGrid());
-		HBox bottom = new HBox();
-		bottom.getChildren().add(gameGrid.getList());
+		VBox bottom = new VBox();
+		bottom.getChildren().add(gameGrid.getInfo());
 		bottom.setAlignment(Pos.CENTER);
 		inGamePane.setBottom(bottom);
 		backButton.setOnAction(e -> primaryStage.setScene(welcomeScreen));
+		
 		
 		
 		// Creating an array of buttons that will be used in the gridpane
 		
 		gameGrid.buildArray();
 		gameGrid.changeTheme1();// initializing the theme
-		//setCheckerActions();
-		ingameScreen = new Scene(inGamePane, 800,800);
+		ingameScreen = new Scene(inGamePane, 1000,1000);
 		
 		///////////////////////////////////
 		// showing the initial screen
 		///////////////////////////////////
 		primaryStage.setScene(welcomeScreen);
-		//primaryStage.setFullScreen(true);
+		primaryStage.setMaximized(true);
 		primaryStage.show();
 	}
 	

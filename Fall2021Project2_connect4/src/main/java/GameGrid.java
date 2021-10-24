@@ -25,6 +25,8 @@ public class GameGrid {
 	private int theme;
 	String p1color;
 	String p2color;
+	
+	// constructor
 	GameGrid() {
 		moveInfo = new Label();
 		moveInfo.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
@@ -80,11 +82,11 @@ public class GameGrid {
 	}
 
 	
-	// gets called whenever a move is made in order to stop the game
-	// if a winner is found
+	// The algorithm to check if the current move is a 
+	// winning play is called after each turn.
+	// It traverses the grid in every direction, starting from the
+	// current piece that was placed. Once it reaches 4 in a row, true is returned.
 	public boolean checkWinner(CheckerPiece checker) {
-		// keeps track of the valid moves that the algorithm finds.
-		// when it reaches 4, the winner is found.
 		System.out.println("THIS IS THE CURRENT PLAYER: ");
 		System.out.println(checker.getPlayer());
 		moveInfo.setText("Player " + checker.getPlayer() + " moved to (" + checker.getRow() + " , " + checker.getCol() + ")");
@@ -151,6 +153,10 @@ public class GameGrid {
 		return false;
 	}
 	
+	// Builds the array (checkerArr) that will hold the CheckerPiece objects.
+	// This function also adds the objects in the array into the
+	// GridPane called GameGrid. The reason for this that the CheckerPiece buttons in
+	// the GridPane can be altered by calling checkerArr[x][y].
 	public void buildArray() {	
 		gameGrid.setVgap(20);
 		gameGrid.setHgap(20);
@@ -185,15 +191,19 @@ public class GameGrid {
 		
 	}
 	
-	
+	// returns the GridPane to be 
+	// displayed on the screen.
 	public GridPane getGrid() {
 		return gameGrid;
 	}
 	
-	public Label getList() {
+	// Returns the label that displays
+	// the current moves in the game.
+	public Label getInfo() {
 		return moveInfo;
 	}
 	
+	// Changes the theme to the corresponding color
 	public void changeTheme1() {
 		this.theme = 1;	
 		//buildArray();
@@ -267,13 +277,10 @@ public class GameGrid {
 		
 	}
 	
-
-//		buildArray();
-//		System.out.println("The theme has been changed");
-
-	
-	// Pops a play from the stack and resets the specific
-	// Button back to its default values.
+	// Pops a CheckerPiece from the stack of
+	// game moves and sets those values on the grid
+	// back to their defaults in order to simulate
+	// "reversing" a move.
 	public void Undo() {
 		if (playHistory.isEmpty() == true) {
 			System.out.println("The stack is empty!!");
