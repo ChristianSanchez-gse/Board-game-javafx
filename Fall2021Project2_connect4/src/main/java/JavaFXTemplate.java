@@ -61,7 +61,7 @@ public class JavaFXTemplate extends Application {
 		
 		//Drpdown for options
 		ChoiceBox<String> optionsDrop = new ChoiceBox<>();
-		optionsDrop.getItems().addAll("Options", "how to play", "new game", "exit");
+		optionsDrop.getItems().addAll("Options", "How To Play", "New Game", "Exit");
 		optionsDrop.setValue("Options");
 		
 
@@ -113,7 +113,7 @@ public class JavaFXTemplate extends Application {
 		    if (selectedItem == "Default") {
 		    	// change the window color
 		    	gameGrid.changeTheme2();
-		    	welcomeScreen.setFill(Color.GREEN);
+		    	//welcomeScreen.setFill(Color.GREEN);
 //		    	ingameScreen.setFill(Color.GREEN);
 //		    	optionsScreen.setFill(Color.GREEN);
 //		    	rulesScreen.setFill(Color.GREEN);
@@ -138,14 +138,15 @@ public class JavaFXTemplate extends Application {
 		//Options procedures
 		optionsDrop.setOnAction((event)-> {
 			Object selectedItem = optionsDrop.getSelectionModel().getSelectedItem();
-			if (selectedItem == "how to play") {
+			if (selectedItem == "How To Play") {
 		    	primaryStage.setScene(rulesScreen);
 		    	
-		    } else if (selectedItem == "new game"){
+		    } else if (selectedItem == "New Game"){
+		    	optionsDrop.setValue("Options");
 		    	gameGrid.newGame();
 		    	primaryStage.setScene(welcomeScreen);
 		    	gameGrid.setInfoDefault();
-		    } else if (selectedItem == "exit") {
+		    } else if (selectedItem == "Exit") {
 		    	Platform.exit();
 		    }
 		});
