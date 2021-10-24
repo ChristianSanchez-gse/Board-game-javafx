@@ -61,7 +61,7 @@ public class JavaFXTemplate extends Application {
 		
 		//Drpdown for options
 		ChoiceBox<String> optionsDrop = new ChoiceBox<>();
-		optionsDrop.getItems().addAll("Options", "how to play", "new game", "exit");
+		optionsDrop.getItems().addAll("Options", "How To Play", "New Game", "Exit");
 		optionsDrop.setValue("Options");
 		
 
@@ -113,8 +113,16 @@ public class JavaFXTemplate extends Application {
 		    if (selectedItem == "Default") {
 
 		    	gameGrid.changeTheme2();
+<<<<<<< HEAD
 		    	welcomeScreen.setFill(Color.GREEN);
 
+=======
+		    	//welcomeScreen.setFill(Color.GREEN);
+//		    	ingameScreen.setFill(Color.GREEN);
+//		    	optionsScreen.setFill(Color.GREEN);
+//		    	rulesScreen.setFill(Color.GREEN);
+		    	
+>>>>>>> 203392104f454191faa3e06f52a4126143a1a9b7
 		    } else if (selectedItem == "Triangle"){
 		    	gameGrid.changeTheme3();
 
@@ -129,15 +137,19 @@ public class JavaFXTemplate extends Application {
 		//Options procedures
 		optionsDrop.setOnAction((event)-> {
 			Object selectedItem = optionsDrop.getSelectionModel().getSelectedItem();
-			if (selectedItem == "how to play") {
+			if (selectedItem == "How To Play") {
 		    	primaryStage.setScene(rulesScreen);
 		    	
+<<<<<<< HEAD
 		    } else if (selectedItem == "new game"){
+=======
+		    } else if (selectedItem == "New Game"){
+>>>>>>> 203392104f454191faa3e06f52a4126143a1a9b7
 		    	optionsDrop.setValue("Options");
 		    	gameGrid.newGame();
 		    	primaryStage.setScene(welcomeScreen);
 		    	gameGrid.setInfoDefault();
-		    } else if (selectedItem == "exit") {
+		    } else if (selectedItem == "Exit") {
 		    	Platform.exit();
 		    }
 		});
