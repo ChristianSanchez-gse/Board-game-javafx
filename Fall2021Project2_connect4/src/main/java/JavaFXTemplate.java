@@ -45,8 +45,7 @@ public class JavaFXTemplate extends Application {
 		// setting up the Welcome screen
 		//////////////////////////////////////
 		
-		InputStream stream = new FileInputStream("C:\\Users\\andre\\OneDrive\\Desktop\\Project\\Board-game-javafx\\Fall2021Project2_connect4\\src\\main\\java\\playButton.png");
-		Image image = new Image(stream);
+		Image image = new Image(getClass().getResourceAsStream("playButton.png"));
 		ImageView imageView = new ImageView();
 		imageView.setImage(image);
 		Button play = new Button();
@@ -93,8 +92,11 @@ public class JavaFXTemplate extends Application {
 		rules.setX(100);
 		rules.setY(100);
 		//rules.setGraphic(imageView2);
-		Group root = new Group(rules);
-		rulesScreen = new Scene(root, 700,700);		
+		
+		Button rulesback = new Button("Back");
+		VBox backbox = new VBox(rulesback);
+		rulesback.setOnAction(e -> primaryStage.setScene(ingameScreen));
+		rulesScreen = new Scene(backbox, 700,700);		
 		
 		
 		// Dropdown for themes
