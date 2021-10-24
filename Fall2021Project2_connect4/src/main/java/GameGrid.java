@@ -88,7 +88,6 @@ public class GameGrid {
 	// current piece that was placed. Once it reaches 4 in a row, true is returned.
 	public boolean checkWinner(CheckerPiece checker) {
 		System.out.println("THIS IS THE CURRENT PLAYER: ");
-		System.out.println(checker.getPlayer());
 		moveInfo.setText("Player " + checker.getPlayer() + " moved to (" + checker.getRow() + " , " + checker.getCol() + ")");
 		
 		int validMoves = 1;
@@ -99,7 +98,7 @@ public class GameGrid {
 			validMoves++;
 			if(validMoves == 4) {return true;}
 		}
-		validMoves--;
+		//validMoves--;
 		checker = origin;
 		while(checker.getPlayer() == origin.getPlayer() &&  checker.getCol() < 6) {
 			checker = checkerArr[checker.getRow()][checker.getCol()+1];
@@ -107,17 +106,20 @@ public class GameGrid {
 			if(validMoves == 4) {return true;}
 		}
 		validMoves = 1;
-		
+		System.out.println("THIS SHOULD BE 1" + validMoves);
 		// traversing diagonal left
+		System.out.println("WE ARE IN HORIZONTAL, VALID COUNTER: " + validMoves);
 		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() > 0 && checker.getCol() > 0) {
 			checker = checkerArr[checker.getRow()-1][checker.getCol()-1];
+			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
 			validMoves++;
 			if(validMoves == 4) {return true;}
 		}
-		validMoves--;
+		//validMoves--;
 		checker = origin;
 		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5 && checker.getCol() < 6) {
 			checker = checkerArr[checker.getRow()+1][checker.getCol()+1];
+			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
 			validMoves++;
 			if(validMoves == 4) {return true;}
 		}
@@ -129,7 +131,7 @@ public class GameGrid {
 			validMoves++;
 			if(validMoves == 4) {return true;}
 		}
-		validMoves--;
+		//validMoves--;
 		checker = origin;
 		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5) {
 			checker = checkerArr[checker.getRow()+1][checker.getCol()];
@@ -291,6 +293,18 @@ public class GameGrid {
 		checkerArr[temp.getRow()][temp.getCol()].setStyle(null);
 		checkerArr[temp.getRow()][temp.getCol()].setPlayer(0);
 		checkerArr[temp.getRow()][temp.getCol()].setOccupied(false);
+	}
+
+	// reverses all the moves to begin the game once again.
+	public void newGame() {
+		while (playHistory.isEmpty() != true) {
+			Undo();
+		}
+	}
+
+	public void setInfoDefault() {
+		moveInfo.setText("");
+		
 	}
 }
 

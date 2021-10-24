@@ -57,11 +57,6 @@ public class JavaFXTemplate extends Application {
 		
 		
 		
-		///////////////////////////////////////
-		// setting up the In Game screen
-		///////////////////////////////////////
-		//Button optionsButton = new Button("Options");
-		Button themesButton = new Button("Themes");
 		Button undoButton = new Button("Undo");
 		Button backButton = new Button("back (this button will be deleted)");
 		
@@ -70,18 +65,7 @@ public class JavaFXTemplate extends Application {
 		optionsDrop.getItems().addAll("Options", "how to play", "new game", "exit");
 		optionsDrop.setValue("Options");
 		
-		//Options procedures
-		optionsDrop.setOnAction((event)-> {
-			Object selectedItem = optionsDrop.getSelectionModel().getSelectedItem();
-			if (selectedItem == "how to play") {
-		    	primaryStage.setScene(rulesScreen);
-		    	
-		    } else if (selectedItem == "new game"){
-		    	
-		    } else if (selectedItem == "exit") {
-		    	Platform.exit();
-		    }
-		});
+
 		
 		// rules screen info
 		Text rules = new Text();
@@ -102,7 +86,7 @@ public class JavaFXTemplate extends Application {
 			optionsDrop.setValue("Options");
 			primaryStage.setScene(ingameScreen);	
 		});
-		rulesScreen = new Scene(backbox, 800,800);		
+		rulesScreen = new Scene(backbox, 1000,1000);		
 		
 		
 		// Dropdown for themes
@@ -152,22 +136,34 @@ public class JavaFXTemplate extends Application {
 		    
 		});
 
-
+		//Options procedures
+		optionsDrop.setOnAction((event)-> {
+			Object selectedItem = optionsDrop.getSelectionModel().getSelectedItem();
+			if (selectedItem == "how to play") {
+		    	primaryStage.setScene(rulesScreen);
+		    	
+		    } else if (selectedItem == "new game"){
+		    	gameGrid.newGame();
+		    	primaryStage.setScene(welcomeScreen);
+		    	gameGrid.setInfoDefault();
+		    } else if (selectedItem == "exit") {
+		    	Platform.exit();
+		    }
+		});
 
 		
 		// Setting action for buttons
 		undoButton.setOnAction(e -> gameGrid.Undo());
 		gameGrid.getGrid().setAlignment(Pos.CENTER);
 		
-		// My attempt at using a borderpane to set the options at the very top and the game grid in the center
-		// of the screen... didnt work but we definitely should use borderpane for this.
+		// borderpane set up
 		inGamePane.setTop(topButtons);
 		inGamePane.setCenter(gameGrid.getGrid());
 		VBox bottom = new VBox();
 		bottom.getChildren().add(gameGrid.getInfo());
 		bottom.setAlignment(Pos.CENTER);
 		inGamePane.setBottom(bottom);
-		backButton.setOnAction(e -> primaryStage.setScene(welcomeScreen));
+		
 		
 		
 		
@@ -181,7 +177,7 @@ public class JavaFXTemplate extends Application {
 		// showing the initial screen
 		///////////////////////////////////
 		primaryStage.setScene(welcomeScreen);
-		primaryStage.setMaximized(true);
+		//primaryStage.setMaximized(true);
 		primaryStage.show();
 	}
 	
