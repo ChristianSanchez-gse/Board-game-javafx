@@ -108,28 +108,19 @@ public class JavaFXTemplate extends Application {
 
 		
 		choiceBox.setOnAction((event) -> {
-		    //int selectedIndex = choiceBox.getSelectionModel().getSelectedIndex();
+
 		    Object selectedItem = choiceBox.getSelectionModel().getSelectedItem();
 		    if (selectedItem == "Default") {
-		    	// change the window color
+
 		    	gameGrid.changeTheme2();
 		    	welcomeScreen.setFill(Color.GREEN);
-//		    	ingameScreen.setFill(Color.GREEN);
-//		    	optionsScreen.setFill(Color.GREEN);
-//		    	rulesScreen.setFill(Color.GREEN);
-		    	
+
 		    } else if (selectedItem == "Triangle"){
 		    	gameGrid.changeTheme3();
-//		    	welcomeScreen.setFill(Color.AQUAMARINE);
-//		    	ingameScreen.setFill(Color.AQUAMARINE);
-//		    	optionsScreen.setFill(Color.AQUAMARINE);
-//		    	rulesScreen.setFill(Color.AQUAMARINE);
+
 		    } else if (selectedItem == "Bruh") {
 		    	gameGrid.changeTheme1();
-//		    	welcomeScreen.setFill(Color.BLUEVIOLET);
-//		    	ingameScreen.setFill(Color.BLUEVIOLET);
-//		    	optionsScreen.setFill(Color.BLUEVIOLET);
-//		    	rulesScreen.setFill(Color.BLUEVIOLET);
+
 		    }
 		    
 		    
@@ -142,6 +133,7 @@ public class JavaFXTemplate extends Application {
 		    	primaryStage.setScene(rulesScreen);
 		    	
 		    } else if (selectedItem == "new game"){
+		    	optionsDrop.setValue("Options");
 		    	gameGrid.newGame();
 		    	primaryStage.setScene(welcomeScreen);
 		    	gameGrid.setInfoDefault();
