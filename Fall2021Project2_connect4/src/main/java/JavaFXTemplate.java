@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -45,10 +47,7 @@ public class JavaFXTemplate extends Application {
 		//////////////////////////////////////
 		// setting up the Welcome screen
 		//////////////////////////////////////
-<<<<<<< HEAD
-		
-=======
->>>>>>> 09f0243c0fff7920009879e13b5909eb984fac26
+
 		Image image = new Image(getClass().getResourceAsStream("playButton.png"));
 		ImageView imageView = new ImageView();
 		imageView.setImage(image);
@@ -82,7 +81,7 @@ public class JavaFXTemplate extends Application {
 		    } else if (selectedItem == "new game"){
 		    	
 		    } else if (selectedItem == "exit") {
-		    	
+		    	Platform.exit();
 		    }
 		});
 		
@@ -92,13 +91,19 @@ public class JavaFXTemplate extends Application {
 		Image image2 = new Image(getClass().getResourceAsStream("c4Rules.png"));
 		ImageView imageView2 = new ImageView();
 		imageView2.setImage(image2);
+		imageView2.setFitWidth(700);
+		imageView2.setFitHeight(600);
 		rules.setX(100);
 		rules.setY(100);
-		//rules.setGraphic(imageView2);
+		
+		
 		
 		Button rulesback = new Button("Back");
-		VBox backbox = new VBox(rulesback);
-		rulesback.setOnAction(e -> primaryStage.setScene(ingameScreen));
+		VBox backbox = new VBox(rulesback, imageView2);
+		rulesback.setOnAction((event) -> {
+			optionsDrop.setValue("Options");
+			primaryStage.setScene(ingameScreen);	
+		});
 		rulesScreen = new Scene(backbox, 700,700);		
 		
 		
@@ -115,6 +120,7 @@ public class JavaFXTemplate extends Application {
 		BorderPane inGamePane = new BorderPane();
 		// create grid object
 		GameGrid gameGrid = new GameGrid();
+		
 
 		
 		
@@ -126,10 +132,23 @@ public class JavaFXTemplate extends Application {
 		    if (selectedItem == "Theme 1") {
 		    	// change the window color
 		    	gameGrid.changeTheme1();
+//		    	welcomeScreen.setFill(Color.GREEN);
+//		    	ingameScreen.setFill(Color.GREEN);
+//		    	optionsScreen.setFill(Color.GREEN);
+//		    	rulesScreen.setFill(Color.GREEN);
+		    	
 		    } else if (selectedItem == "Theme 2"){
 		    	gameGrid.changeTheme2();
+//		    	welcomeScreen.setFill(Color.AQUAMARINE);
+//		    	ingameScreen.setFill(Color.AQUAMARINE);
+//		    	optionsScreen.setFill(Color.AQUAMARINE);
+//		    	rulesScreen.setFill(Color.AQUAMARINE);
 		    } else if (selectedItem == "Theme 3") {
 		    	gameGrid.changeTheme3();
+//		    	welcomeScreen.setFill(Color.BLUEVIOLET);
+//		    	ingameScreen.setFill(Color.BLUEVIOLET);
+//		    	optionsScreen.setFill(Color.BLUEVIOLET);
+//		    	rulesScreen.setFill(Color.BLUEVIOLET);
 		    }
 		    
 		    
