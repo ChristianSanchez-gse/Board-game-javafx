@@ -8,10 +8,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -19,6 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class JavaFXTemplate extends Application {
@@ -42,7 +45,7 @@ public class JavaFXTemplate extends Application {
 		// setting up the Welcome screen
 		//////////////////////////////////////
 		
-		InputStream stream = new FileInputStream("C:\\Users\\andre\\OneDrive\\Desktop\\playButton.png");
+		InputStream stream = new FileInputStream("C:\\Users\\andre\\OneDrive\\Desktop\\Project\\Board-game-javafx\\Fall2021Project2_connect4\\src\\main\\java\\playButton.png");
 		Image image = new Image(stream);
 		ImageView imageView = new ImageView();
 		imageView.setImage(image);
@@ -58,11 +61,43 @@ public class JavaFXTemplate extends Application {
 		///////////////////////////////////////
 		// setting up the In Game screen
 		///////////////////////////////////////
-		Button optionsButton = new Button("Options");
+		//Button optionsButton = new Button("Options");
 		Button themesButton = new Button("Themes");
 		Button undoButton = new Button("Undo");
 		Button backButton = new Button("back (this button will be deleted)");
 		
+		//Drpdown for options
+		ChoiceBox<String> optionsDrop = new ChoiceBox<>();
+		optionsDrop.getItems().addAll("Options", "how to play", "new game", "exit");
+		optionsDrop.setValue("Options");
+		
+		//Options procedures
+		optionsDrop.setOnAction((event)-> {
+			Object selectedItem = optionsDrop.getSelectionModel().getSelectedItem();
+			if (selectedItem == "how to play") {
+		    	primaryStage.setScene(rulesScreen);
+		    } else if (selectedItem == "new game"){
+		    	
+		    } else if (selectedItem == "exit") {
+		    	
+		    }
+		});
+		
+		// rules screen info
+		Text rules = new Text();
+		rules.setText("These are the rules");
+		InputStream rulestream = new FileInputStream("C:\\Users\\andre\\OneDrive\\Desktop\\Project\\Board-game-javafx\\Fall2021Project2_connect4\\src\\main\\java\\c4rules.png");
+		Image image2 = new Image(rulestream);
+		ImageView imageView2 = new ImageView();
+		imageView2.setImage(image2);
+		rules.setX(100);
+		rules.setY(100);
+		//rules.setGraphic(imageView2);
+		Group root = new Group(rules);
+		rulesScreen = new Scene(root, 700,700);		
+		
+		
+		// Dropdown for themes
 		ChoiceBox<String> choiceBox = new ChoiceBox<>();
 		choiceBox.getItems().addAll("Theme 1", "Theme 2", "Theme 3");
 		choiceBox.setValue("Theme 1");
@@ -70,7 +105,7 @@ public class JavaFXTemplate extends Application {
 		//choiceBox.addEventHandler(, null);
 		
 		
-		HBox topButtons = new HBox(optionsButton, choiceBox, undoButton, backButton);
+		HBox topButtons = new HBox(optionsDrop, choiceBox, undoButton, backButton);
 		topButtons.setAlignment(Pos.TOP_CENTER);
 		BorderPane inGamePane = new BorderPane();
 		// create grid object
