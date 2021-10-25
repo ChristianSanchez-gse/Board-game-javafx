@@ -149,19 +149,8 @@ public class GameGrid {
 		///////////////////////////////////
 		// traversing downward
 		//////////////////////////////////
-		System.out.println("WE ARE IN DOWNWARD (UP), VALID COUNTER: " + validMoves);
-		while(checker.getRow() >= 0 && checkerArr[checker.getRow()-1][checker.getCol()].getPlayer() == origin.getPlayer()) {
-			checker = checkerArr[checker.getRow()-1][checker.getCol()];
-			
-			validMoves++;
-			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
-			if(validMoves == 4) {return true;}
-			
-		}
-		validMoves--;
-		checker = origin;
 		System.out.println("WE ARE IN DOWNWARD, VALID COUNTER: " + validMoves);
-		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5) {
+		while(checker.getRow()+1 <= 5 && checkerArr[checker.getRow()+1][checker.getCol()].getPlayer() == origin.getPlayer() ) {
 			checker = checkerArr[checker.getRow()+1][checker.getCol()];
 			
 			validMoves++;
@@ -171,30 +160,30 @@ public class GameGrid {
 		}
 		validMoves = 1;
 		checker = origin;
-		/*
+		
 		// traversing diagonal right
 		System.out.println("WE ARE IN DIAGONAL RIGHT UP, VALID COUNTER: " + validMoves);
-		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() > 0 && checker.getCol() < 6) {
-			if(validMoves == 4) {return true;}
+		while(checker.getRow()-1 > 0 && checker.getCol()+1 < 6 && checkerArr[checker.getRow()-1][checker.getCol()+1].getPlayer() == origin.getPlayer()) {
 			checker = checkerArr[checker.getRow()-1][checker.getCol()+1];
 			
 			validMoves++;
+			if(validMoves == 4) {return true;}
 			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
 			
 		}
-		validMoves--;
 		checker = origin;
 		System.out.println("WE ARE IN DIAGONAL RIGHT DOWN, VALID COUNTER: " + validMoves);
-		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5 && checker.getCol() > 0) {
-			if(validMoves == 4) {return true;}
+		while(checker.getRow()+1 <= 5 && checker.getCol()-1 >= 0 && checkerArr[checker.getRow()+1][checker.getCol()-1].getPlayer() == origin.getPlayer()) {
+			
 			checker = checkerArr[checker.getRow()+1][checker.getCol()-1];
 			
 			validMoves++;
+			if(validMoves == 4) {return true;}
 			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
 			
 		}
 		
-		*/
+		
 		return false;
 	}
 	
