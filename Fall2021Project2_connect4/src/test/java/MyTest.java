@@ -16,12 +16,13 @@ class MyTest {
 	@BeforeAll
 	static void setup() {
 		testGrid = new GameGrid();
-		
+		testGrid.buildArray();
+		cp1 = new CheckerPiece("one", 1, 1);
 	}
 
 	@Test
-	void test() {
-		
+	void checkerPiece1() {
+		assertEquals(1, cp1.getRow(), "Incorrect!");
 	}
 
 }
