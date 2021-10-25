@@ -3,11 +3,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.DisplayName;
-
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
 class MyTest {
 	
 	static GameGrid testGrid;
@@ -22,7 +17,23 @@ class MyTest {
 
 	@Test
 	void checkerPiece1() {
+		cp1 = new CheckerPiece("one", 1, 1);
 		assertEquals(1, cp1.getRow(), "Incorrect!");
+	}
+	
+	@Test
+	void undoStackNotEmpty() {
+		GameGrid grid = new GameGrid();
+		grid.addToStack(cp1);
+		grid.addToStack(cp1);
+		grid.addToStack(cp1);
+		grid.addToStack(cp1);
+		assertEquals(false, grid.isStackEmpty());
+	}
+	@Test
+	void undoStackEmpty() {
+		GameGrid grid = new GameGrid();
+		assertEquals(true, grid.isStackEmpty());
 	}
 
 }

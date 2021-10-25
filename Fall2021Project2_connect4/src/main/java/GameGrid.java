@@ -1,17 +1,10 @@
 import java.util.Stack;
 
 
-import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.CubicCurve;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.QuadCurve;
-import javafx.scene.shape.Shape;
-import javafx.scene.shape.TriangleMesh;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -346,6 +339,12 @@ public class GameGrid {
 
 	public Label getNextPlayer() {
 		return nextPlayer;
+	}
+	public void addToStack(CheckerPiece checker) {
+		playHistory.add(checker);
+	}
+	public boolean isStackEmpty() {
+		return playHistory.isEmpty();
 	}
 }
 
