@@ -327,6 +327,7 @@ public class GameGrid {
 	// reverses all the moves to begin the game once again.
 	public void newGame() {
 		gameGrid.setDisable(false);
+		//moveInfo.setText("");
 		while (playHistory.isEmpty() != true) {
 			Undo();
 		}
