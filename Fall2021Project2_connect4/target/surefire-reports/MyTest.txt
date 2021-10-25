@@ -1,10 +1,19 @@
 -------------------------------------------------------------------------------
 Test set: MyTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.577 s <<< FAILURE! - in MyTest
 checkerPiece1  Time elapsed: 0.565 s  <<< ERROR!
 java.lang.ExceptionInInitializerError
 	at MyTest.setup(MyTest.java:20)
 Caused by: java.lang.IllegalStateException: Toolkit not initialized
 	at MyTest.setup(MyTest.java:20)
+=======
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.247 s <<< FAILURE! - in MyTest
+MyTest  Time elapsed: 0.244 s  <<< ERROR!
+java.lang.ExceptionInInitializerError
+	at MyTest.setup(MyTest.java:13)
+Caused by: java.lang.IllegalStateException: Toolkit not initialized
+	at MyTest.setup(MyTest.java:13)
+>>>>>>> b6628c02b71de1a13e969d253a3ede87084fb0c1
 
