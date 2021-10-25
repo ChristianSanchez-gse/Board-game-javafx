@@ -21,6 +21,7 @@ public class GameGrid {
 	Stack<CheckerPiece> playHistory = new Stack<CheckerPiece>();
 	GridPane gameGrid;
 	Label moveInfo;
+	Label nextPlayer;
 	private final CheckerPiece[][] checkerArr = new CheckerPiece[6][7];
 	private int theme;
 	String p1color;
@@ -29,10 +30,12 @@ public class GameGrid {
 	// constructor
 	GameGrid() {
 		moveInfo = new Label();
-		moveInfo.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+		moveInfo.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 30));
 		p1color = "-fx-background-color: #00b3ff";
 		p2color = "-fx-background-color: #00ff99";
 		gameGrid = new GridPane();
+		nextPlayer = new Label("Player 1's turn");
+		nextPlayer.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 30));
 	}
 	
 	// returns true if the current move is valid
@@ -70,10 +73,12 @@ public class GameGrid {
 			checkerArr[checker.getRow()][checker.getCol()].setStyle(p1color);
 			checkerArr[checker.getRow()][checker.getCol()].setPlayer(2);
 			System.out.println("it is now player 1's turn");
+			nextPlayer.setText("Player 1's turn");
 		} else {
-				checkerArr[checker.getRow()][checker.getCol()].setStyle(p2color);
-				checkerArr[checker.getRow()][checker.getCol()].setPlayer(1);
-				System.out.println("it is now player 2's turn");
+			checkerArr[checker.getRow()][checker.getCol()].setStyle(p2color);
+			checkerArr[checker.getRow()][checker.getCol()].setPlayer(1);
+			System.out.println("it is now player 2's turn");
+			nextPlayer.setText("Player 2's turn");
 		}
 		System.out.println("added player to the stack: " + checker.getPlayer());
 		playHistory.add(checker);
@@ -87,71 +92,104 @@ public class GameGrid {
 	// It traverses the grid in every direction, starting from the
 	// current piece that was placed. Once it reaches 4 in a row, true is returned.
 	public boolean checkWinner(CheckerPiece checker) {
-		System.out.println("THIS IS THE CURRENT PLAYER: ");
+		System.out.println("START OF FUCKING CHECK WINNER FUNCTION: ");
+		System.out.println("--------------------------------------------------------");
 		moveInfo.setText("Player " + checker.getPlayer() + " moved to (" + checker.getRow() + " , " + checker.getCol() + ")");
 		
 		int validMoves = 1;
 		CheckerPiece origin = checker;
 		// traversing horizontally
-		while(checker.getPlayer() == origin.getPlayer() && checker.getCol() > 0) {
+		System.out.println("WE ARE IN HORIZONTAL LEFT, VALID COUNTER: " + validMoves);
+		while(checker.getCol()-1 >= 0 && checkerArr[checker.getRow()][checker.getCol()-1].getPlayer() == origin.getPlayer()) {
+			
 			checker = checkerArr[checker.getRow()][checker.getCol()-1];
+			
 			validMoves++;
 			if(validMoves == 4) {return true;}
+			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
 		}
-		//validMoves--;
 		checker = origin;
-		while(checker.getPlayer() == origin.getPlayer() &&  checker.getCol() < 6) {
+		System.out.println("WE ARE IN HORIZONTAL RIGHT, VALID COUNTER: " + validMoves);
+		while(checker.getCol()+1 <= 6 && checkerArr[checker.getRow()][checker.getCol()+1].getPlayer() == origin.getPlayer()) {
+			if(validMoves == 4) {return true;}
 			checker = checkerArr[checker.getRow()][checker.getCol()+1];
+			
 			validMoves++;
-			if(validMoves == 4) {return true;}
+			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
+			
 		}
+		/*
 		validMoves = 1;
-		System.out.println("THIS SHOULD BE 1" + validMoves);
+		checker = origin;
 		// traversing diagonal left
-		System.out.println("WE ARE IN HORIZONTAL, VALID COUNTER: " + validMoves);
+		System.out.println("WE ARE IN DIAGONAL LEFT UP, VALID COUNTER: " + validMoves);
 		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() > 0 && checker.getCol() > 0) {
+			if(validMoves == 4) {return true;}
 			checker = checkerArr[checker.getRow()-1][checker.getCol()-1];
-			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
+			
 			validMoves++;
-			if(validMoves == 4) {return true;}
+			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
+			
 		}
-		//validMoves--;
+		validMoves--;
 		checker = origin;
+		System.out.println("WE ARE IN DIAGONAL LEFT DOWN, VALID COUNTER: " + validMoves);
 		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5 && checker.getCol() < 6) {
+			if(validMoves == 4) {return true;}
 			checker = checkerArr[checker.getRow()+1][checker.getCol()+1];
+			
+			validMoves++;
 			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
-			validMoves++;
-			if(validMoves == 4) {return true;}
+			
 		}
 		validMoves = 1;
-		
+		checker = origin;
 		// traversing downward
+		System.out.println("WE ARE IN DOWNWARD (UP), VALID COUNTER: " + validMoves);
 		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() > 0) {
+			if(validMoves == 4) {return true;}
 			checker = checkerArr[checker.getRow()-1][checker.getCol()];
+			
 			validMoves++;
-			if(validMoves == 4) {return true;}
+			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
+			
 		}
-		//validMoves--;
+		validMoves--;
 		checker = origin;
+		System.out.println("WE ARE IN DOWNWARD, VALID COUNTER: " + validMoves);
 		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5) {
-			checker = checkerArr[checker.getRow()+1][checker.getCol()];
-			validMoves++;
 			if(validMoves == 4) {return true;}
+			checker = checkerArr[checker.getRow()+1][checker.getCol()];
+			
+			validMoves++;
+			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
+			
 		}
 		validMoves = 1;
-		
-		// traversing diagonal right
-		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() > 0 && checker.getCol() > 6) {
-			checker = checkerArr[checker.getRow()-1][checker.getCol()+1];
-			validMoves++;
-			if(validMoves == 4) {return true;}
-		}
 		checker = origin;
-		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5 && checker.getCol() > 0) {
-			checker = checkerArr[checker.getRow()+1][checker.getCol()-1];
-			validMoves++;
+		// traversing diagonal right
+		System.out.println("WE ARE IN DIAGONAL RIGHT UP, VALID COUNTER: " + validMoves);
+		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() > 0 && checker.getCol() < 6) {
 			if(validMoves == 4) {return true;}
+			checker = checkerArr[checker.getRow()-1][checker.getCol()+1];
+			
+			validMoves++;
+			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
+			
 		}
+		validMoves--;
+		checker = origin;
+		System.out.println("WE ARE IN DIAGONAL RIGHT DOWN, VALID COUNTER: " + validMoves);
+		while(checker.getPlayer() == origin.getPlayer() && checker.getRow() < 5 && checker.getCol() > 0) {
+			if(validMoves == 4) {return true;}
+			checker = checkerArr[checker.getRow()+1][checker.getCol()-1];
+			
+			validMoves++;
+			System.out.println("TRAVERSING TO " + checker.getRow() + " , " + checker.getCol() + "    COUNTER: " + validMoves);
+			
+		}
+		
+		*/
 		return false;
 	}
 	
@@ -164,7 +202,7 @@ public class GameGrid {
 		gameGrid.setHgap(20);
 		for(int row = 0; row < 6; row++) {
 			for(int col = 0; col < 7; col++) {
-				CheckerPiece temp = new CheckerPiece("", row , col);
+				CheckerPiece temp = new CheckerPiece(row + ", " + col, row , col);
 				temp.setPrefSize(70, 70);
 				gameGrid.add(temp,col,row);
 				temp.setOnAction(e -> pressButton(temp));
@@ -184,7 +222,11 @@ public class GameGrid {
 		System.out.println("Valid : " + isValid(checker));
 		if (isValid(checker)) {
 			checker = moveDown(checker);
-			if (checkWinner(checker)) {System.out.println("FUCKIN WINNING MOVE RIGHT THERE");}
+			if (checkWinner(checker)) {
+				System.out.println("WINNING MOVE RIGHT THERE");
+				nextPlayer.setText("PLAYER " + checker.getPlayer() + " WINS !!!!!" + "   Click new game to play again");
+				gameGrid.setDisable(true);
+				}
 		} else {
 			System.out.println("invalid move, do nothing.");
 			moveInfo.setText("Invalid move. Try a different play");
@@ -305,6 +347,10 @@ public class GameGrid {
 	public void setInfoDefault() {
 		moveInfo.setText("");
 		
+	}
+
+	public Label getNextPlayer() {
+		return nextPlayer;
 	}
 }
 
