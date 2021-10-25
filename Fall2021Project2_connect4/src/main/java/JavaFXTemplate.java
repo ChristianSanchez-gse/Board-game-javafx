@@ -1,27 +1,14 @@
-import java.awt.Insets;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -54,9 +41,6 @@ public class JavaFXTemplate extends Application {
 		play.setOnAction(e -> primaryStage.setScene(ingameScreen));
 		box.setAlignment(Pos.CENTER);
 		welcomeScreen = new Scene(box, 1000,900);
-		
-		
-		
 		Button undoButton = new Button("Undo");
 		
 		//Drpdown for options
@@ -108,7 +92,6 @@ public class JavaFXTemplate extends Application {
 
 		
 		choiceBox.setOnAction((event) -> {
-
 		    Object selectedItem = choiceBox.getSelectionModel().getSelectedItem();
 		    if (selectedItem == "Default") {
 		    	gameGrid.changeTheme2();
@@ -151,6 +134,7 @@ public class JavaFXTemplate extends Application {
 		inGamePane.setTop(topButtons);
 		inGamePane.setCenter(gameGrid.getGrid());
 		VBox bottom = new VBox();
+		bottom.getChildren().add(gameGrid.getNextPlayer());
 		bottom.getChildren().add(gameGrid.getInfo());
 		bottom.setAlignment(Pos.CENTER);
 		inGamePane.setBottom(bottom);
