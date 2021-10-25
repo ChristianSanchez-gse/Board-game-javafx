@@ -111,7 +111,6 @@ public class JavaFXTemplate extends Application {
 
 		    Object selectedItem = choiceBox.getSelectionModel().getSelectedItem();
 		    if (selectedItem == "Default") {
-
 		    	gameGrid.changeTheme2();
 
 		    } else if (selectedItem == "Triangle"){
