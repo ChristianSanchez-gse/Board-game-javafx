@@ -28,7 +28,6 @@ public class JavaFXTemplate extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// Setting up the program details and advancing to the welcome screen.
 		primaryStage.setTitle("Connect 4 by Christian Sanchez and Andrew Mina");
-		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("bruh.jpg")));
 		//////////////////////////////////////
 		// setting up the Welcome screen
 		//////////////////////////////////////
